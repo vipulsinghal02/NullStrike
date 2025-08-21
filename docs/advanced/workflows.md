@@ -892,4 +892,4 @@ This comprehensive workflow system provides a flexible framework for creating so
 2. **Customize workflow steps** for your specific analysis needs
 3. **Combine multiple methods** for comprehensive analysis
 4. **Develop domain-specific workflows** for your research area
-5. **Explore [Mathematical Extensions](extensions.md)** for advanced algorithms
+5. **Review [API documentation](../api/core.md)** for programmatic access

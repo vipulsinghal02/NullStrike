@@ -376,8 +376,8 @@ The key insight is that **even simple systems provide valuable insights** when a
 
 ## Further Reading
 
-- **[Two-Compartment Model](c2m.md)**: Similar structure with added complexity
-- **[Calibration Model](calibration.md)**: Nonlinear system with enzyme kinetics  
+- **Two-Compartment Model**: Similar structure with added complexity (see custom_models/C2M.py)
+- **Calibration Model**: Nonlinear system with enzyme kinetics (see custom_models/calibration_single.py)  
 - **[Theory Overview](../theory/overview.md)**: Mathematical foundations
 - **[Results Interpretation](../results/interpretation.md)**: How to analyze output files
 

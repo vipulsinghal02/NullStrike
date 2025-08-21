@@ -222,9 +222,7 @@ for name, plot in manifold_plots.items():
 
 ### Model Utilities
 
-::: nullstrike.models
-
-Utilities for loading and validating model definitions.
+The `nullstrike.models` module provides utilities for loading and validating model definitions from the `custom_models/` directory.
 
 #### Key Functions
 
@@ -238,29 +236,37 @@ Loads a model from the custom_models directory.
 **Returns:**
 - Model object with symbolic definitions
 
-##### `validate_model(model)`
-
-Validates model definition for completeness and consistency.
-
-**Parameters:**
-- `model`: Model object to validate
-
-**Returns:**
-- Boolean indicating validity and list of validation messages
+**Available Models:**
+- `Bolie` - Bolie's model for glucose-insulin dynamics
+- `C2M` - Two-compartment pharmacokinetic model
+- `calibration_single` - Single-parameter calibration model
+- `1A_integral`, `1B_prop_integral`, `1C_nonlinear` - Control system examples
 
 #### Usage Example
 
 ```python
-from nullstrike.models import load_model, validate_model
+from nullstrike.models import load_model
 
 # Load model
-model = load_model('my_custom_model')
+model = load_model('C2M')
 
-# Validate model structure
-is_valid, messages = validate_model(model)
-if not is_valid:
-    for msg in messages:
-        print(f"Validation error: {msg}")
+# Access model components
+print(f"State variables: {model.x}")
+print(f"Parameters: {model.p}")
+print(f"Outputs: {model.h}")
+print(f"Dynamics: {model.f}")
+```
+
+#### Dynamic Model Access
+
+Models can also be accessed as attributes:
+
+```python
+from nullstrike.models import Bolie, C2M
+
+# Direct access to models
+bolie_model = Bolie
+c2m_model = C2M
 ```
 
 ### Configuration Management
@@ -553,10 +559,9 @@ def profile_analysis(model_name):
 
 ## Further Reading
 
-- **[Analysis Module](analysis.md)**: Detailed analysis function documentation
-- **[Visualization Module](visualization.md)**: Complete visualization API
-- **[CLI Module](cli.md)**: Command-line interface implementation
-- **[User Guide](../guide/python-api.md)**: High-level Python API usage
+- **[User Guide](../guide/cli-usage.md)**: Command-line interface usage
+- **[Examples](../examples/simple.md)**: Practical examples and tutorials
+- **[Architecture](../dev/architecture.md)**: System design and components
 
 !!! note "API Stability"
     
