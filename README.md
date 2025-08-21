@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Documentation](https://img.shields.io/badge/docs-MkDocs-green.svg)](https://vipulsinghal02.github.io/NullStrike/)
 
-**NullStrike** is an advanced structural identifiability analysis tool that extends StrikePy (Python implementation of STRIKE-GOLDD) with sophisticated **nullspace analysis** capabilities. While traditional methods only identify which parameters are unidentifiable, NullStrike determines which **parameter combinations are identifiable** even when individual parameters are not.
+**NullStrike** is a structural identifiability analysis tool that extends StrikePy (Python implementation of STRIKE-GOLDD) with sophisticated **nullspace analysis** capabilities. While traditional methods only identify which parameters are unidentifiable, NullStrike determines which **parameter combinations are identifiable** even when individual parameters are not.
 
 ## What Makes NullStrike Different
 
@@ -234,5 +234,6 @@ If you use NullStrike in your research, please cite:
 - **Discussions**: [GitHub Discussions](https://github.com/vipulsinghal02/NullStrike/discussions)
 
 ---
+
 
 **NullStrike**: *From "parameters are unidentifiable" to "these combinations ARE identifiable"*
