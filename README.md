@@ -1,139 +1,238 @@
-# NullStrike Documentation
+# NullStrike
 
-Welcome to **NullStrike** - a powerful tool for structural identifiability analysis of nonlinear dynamical systems with advanced nullspace analysis capabilities.
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Documentation](https://img.shields.io/badge/docs-MkDocs-green.svg)](https://vipulsinghal02.github.io/NullStrike/)
 
-![NullStrike Logo](assets/nullstrike-banner.png){ .center }
+**NullStrike** is an advanced structural identifiability analysis tool that extends StrikePy (Python implementation of STRIKE-GOLDD) with sophisticated **nullspace analysis** capabilities. While traditional methods only identify which parameters are unidentifiable, NullStrike determines which **parameter combinations are identifiable** even when individual parameters are not.
 
-## What is NullStrike?
+## 🎯 What Makes NullStrike Different
 
-NullStrike extends the capabilities of StrikePy (a Python implementation of STRIKE-GOLDD) by adding sophisticated nullspace analysis to determine not just which parameters are unidentifiable, but which **parameter combinations are identifiable** even when individual parameters are not.
+Traditional structural identifiability analysis tells you *which parameters cannot be identified*. NullStrike goes further by discovering *which parameter combinations CAN be identified*, providing actionable insights for experimental design and parameter estimation.
 
-### The Core Problem
+### Key Innovation: Nullspace Analysis
 
-In many dynamical systems, individual parameters may be unidentifiable, but specific combinations of these parameters can still be uniquely determined from experimental data. NullStrike bridges this gap by:
+The mathematical foundation is:
 
-1. **Computing the observability-identifiability matrix** using Lie derivatives
-2. **Analyzing the nullspace** to find unidentifiable directions  
-3. **Identifying the row space** containing identifiable parameter combinations
-4. **Visualizing these relationships** through 3D manifolds and constraint graphs
+```
+Observability Matrix: O = [h, Lf h, Lf² h, ..., Lfⁿ h]ᵀ
+Nullspace: N = nullspace(O) ← unidentifiable directions  
+Identifiable Combinations: I = nullspace(N) ← what you CAN estimate
+```
 
-## Key Features
+If the nullspace has dimension *k*, then *(total_parameters - k)* independent parameter combinations are identifiable.
 
-=== "Mathematical Foundation"
-    
-    - **STRIKE-GOLDD Algorithm**: Structural identifiability analysis using Lie derivatives
-    - **Nullspace Analysis**: $\mathcal{N} = \text{Matrix}(\text{nullspace\_vectors})$
-    - **Identifiable Directions**: $\text{identifiable\_directions} = \mathcal{N}.\text{nullspace}()$
-    - **Symbolic Computation**: Full symbolic analysis using SymPy
+## 🚀 Quick Start
 
-=== "Visualization & Analysis"
-    
-    - **3D Manifold Plots**: Visualize parameter constraint surfaces
-    - **2D Projections**: Understand pairwise parameter relationships  
-    - **Graph Analysis**: Network representation of parameter dependencies
-    - **Comprehensive Reports**: Mathematical interpretations and results
+### Installation
 
-=== "Performance & Usability"
-    
-    - **Checkpointing System**: Efficient reanalysis with intelligent caching
-    - **CLI Interface**: Simple command-line usage
-    - **Python API**: Programmatic access for advanced users
-    - **Batch Processing**: Analyze multiple models efficiently
+```bash
+# Clone and install in development mode
+git clone https://github.com/vipulsinghal02/NullStrike.git
+cd NullStrike
+pip install -e .
+```
 
-## Quick Start
+### Basic Usage
 
-Get started with NullStrike in just a few commands:
+```bash
+# Analyze built-in models
+nullstrike C2M                    # Two-compartment pharmacokinetic model
+nullstrike Bolie                  # Bolie glucose-insulin model  
+nullstrike calibration_single     # Calibration example
 
-=== "Command Line"
+# Custom analysis
+nullstrike my_model options_my_model
+```
 
-    ```bash
-    # Install NullStrike
-    pip install -e .
-    
-    # Run analysis on built-in examples
-    nullstrike C2M                    # Two-compartment model
-    nullstrike calibration_single     # Calibration example
-    nullstrike Bolie                  # Bolie model
-    ```
+### Python API
 
-=== "Python API"
+```python
+from nullstrike.cli.complete_analysis import main
 
-    ```python
-    from nullstrike.cli.complete_analysis import main
-    
-    # Run complete analysis
-    results = main('C2M', 'options_C2M')
-    
-    # Results include:
-    # - Identifiability analysis
-    # - Parameter combinations  
-    # - Visualization files
-    # - Detailed reports
-    ```
+# Run complete analysis
+results = main('C2M', 'options_C2M')
+# Results include parameter combinations, visualizations, and detailed reports
+```
 
-=== "Custom Models"
+## 📊 Example Results
 
-    ```python
-    # Define your model in custom_models/my_model.py
-    import sympy as sym
-    
-    # States
-    x1, x2 = sym.symbols('x1 x2')
-    x = [[x1], [x2]]
-    
-    # Parameters  
-    p1, p2, p3 = sym.symbols('p1 p2 p3')
-    p = [[p1], [p2], [p3]]
-    
-    # Outputs
-    h = [x1]
-    
-    # Dynamics
-    f = [[p1*x1 + p2*x2], [-p3*x1]]
-    ```
+### Two-Compartment Pharmacokinetic Model
 
-## Example Results
+For a typical PK model with parameters `k12`, `k21`, `V1`, `V2`:
 
-NullStrike generates comprehensive analysis including:
+**Traditional Analysis**: *"All parameters are unidentifiable"*
 
-!!! example "Two-Compartment Model Results"
-    
-    For a pharmacokinetic two-compartment model:
-    
-    - **Unidentifiable parameters**: `k12`, `k21`, `V1`, `V2` individually
-    - **Identifiable combinations**: `k12*V1`, `k21*V2`, `(k12+k21+k10)*V1`  
-    - **Visualization**: 3D manifolds showing constraint surfaces
-    - **Graph analysis**: Parameter dependency networks
+**NullStrike Analysis**: 
+- ✅ **Identifiable combinations**: `k12×V1`, `k21×V2`, `(k12+k21+k10)×V1`
+- 🔍 **Nullspace dimension**: 1 (out of 4 parameters)
+- 📈 **3 independent combinations** can be reliably estimated
 
-## Mathematical Background
+### Visualization Outputs
 
-The core mathematical relationship in NullStrike is:
+NullStrike generates comprehensive visual analysis:
+
+- **3D Manifold Plots**: Parameter constraint surfaces
+- **2D Projections**: Pairwise parameter relationships  
+- **Graph Networks**: Parameter dependency visualization
+- **Detailed Reports**: Mathematical interpretations
+
+## 🧮 Mathematical Foundation
+
+NullStrike implements structural identifiability analysis using:
+
+### STRIKE-GOLDD Algorithm
+Computes the observability-identifiability matrix using Lie derivatives:
+
+$$\mathcal{O} = \begin{bmatrix} 
+\mathcal{L}_f^0 h \\
+\mathcal{L}_f^1 h \\
+\vdots \\
+\mathcal{L}_f^n h 
+\end{bmatrix}$$
+
+### Nullspace Analysis  
+Identifies unidentifiable and identifiable directions:
 
 $$\begin{align}
-\mathcal{O} &= \begin{bmatrix} \mathcal{L}_f^0 h \\ \mathcal{L}_f^1 h \\ \vdots \\ \mathcal{L}_f^n h \end{bmatrix} \\[0.5em]
-\mathcal{N} &= \text{nullspace}(\mathcal{O}) \\[0.5em]
-\mathcal{I} &= \text{nullspace}(\mathcal{N})
+\mathcal{N} &= \text{nullspace}(\mathcal{O}) \quad \text{(unidentifiable directions)} \\
+\mathcal{I} &= \text{nullspace}(\mathcal{N}) \quad \text{(identifiable combinations)}
 \end{align}$$
 
-Where:
-- $\mathcal{O}$ is the observability-identifiability matrix
-- $\mathcal{L}_f^k h$ are the $k$-th Lie derivatives  
-- $\mathcal{N}$ contains unidentifiable directions
-- $\mathcal{I}$ contains identifiable parameter combinations
+### Symbolic Computation
+Full symbolic analysis ensures exact mathematical relationships without numerical approximation errors.
 
-## Navigation Guide
+## 🏗️ Project Structure
 
-- **[Getting Started](installation.md)**: Installation and setup
-- **[Mathematical Foundations](theory/overview.md)**: Theory and algorithms  
-- **[User Guide](guide/models.md)**: Practical usage instructions
-- **[Examples](examples/simple.md)**: Step-by-step tutorials
-- **[API Reference](api/core.md)**: Detailed code documentation
+```
+NullStrike/
+├── src/nullstrike/
+│   ├── core/              # Original StrikePy functionality
+│   ├── analysis/          # Enhanced nullspace analysis  
+│   ├── visualization/     # 3D manifolds and graphs
+│   └── cli/              # Command-line interface
+├── custom_models/         # User-defined dynamical systems
+├── custom_options/        # Model-specific analysis options  
+├── results/              # Generated analysis outputs
+└── docs/                 # Comprehensive documentation
+```
+
+## 📚 Model Definition
+
+Define your dynamical system in `custom_models/my_model.py`:
+
+```python
+import sympy as sym
+
+# States  
+x1, x2 = sym.symbols('x1 x2')
+x = [[x1], [x2]]
+
+# Parameters
+p1, p2, p3 = sym.symbols('p1 p2 p3') 
+p = [[p1], [p2], [p3]]
+
+# Outputs (measurements)
+h = [x1]
+
+# Known inputs
+u1 = sym.Symbol('u1')
+u = [u1]
+
+# Dynamics dx/dt = f
+f = [[p1*x1 + p2*x2 + u1], [-p3*x1]]
+
+# Required for StrikePy
+variables_locales = locals().copy()
+```
+
+Configure analysis in `custom_options/options_my_model.py`:
+
+```python
+modelname = 'my_model'
+checkObser = 1           # Check state observability 
+maxLietime = 100         # Max time per Lie derivative (seconds)
+nnzDerU = [0]           # Known input derivative limits
+prev_ident_pars = []    # Previously identified parameters
+```
+
+## 🔧 Advanced Features
+
+- **Checkpointing System**: Intelligent caching avoids recomputation
+- **Batch Processing**: Analyze multiple models efficiently  
+- **Parameter Manifold Visualization**: 3D constraint surfaces
+- **Graph Analysis**: Network representation of dependencies
+- **Comprehensive Reports**: Mathematical interpretations and actionable insights
+
+## 📖 Documentation
+
+**[Full Documentation](https://vipulsinghal02.github.io/NullStrike/)** includes:
+
+- **[Installation Guide](https://vipulsinghal02.github.io/NullStrike/installation/)**: Detailed setup instructions
+- **[Mathematical Theory](https://vipulsinghal02.github.io/NullStrike/theory/overview/)**: STRIKE-GOLDD and nullspace analysis
+- **[User Guide](https://vipulsinghal02.github.io/NullStrike/guide/models/)**: Model definition and configuration  
+- **[Examples & Tutorials](https://vipulsinghal02.github.io/NullStrike/examples/simple/)**: Step-by-step walkthroughs
+- **[API Reference](https://vipulsinghal02.github.io/NullStrike/api/core/)**: Complete code documentation
+
+## 🧪 Development
+
+### Running Tests
+
+```bash
+pytest                    # Run test suite
+pytest --cov=nullstrike  # With coverage reporting
+```
+
+### Code Quality
+
+```bash
+black src/               # Format code
+flake8 src/              # Lint code  
+mypy src/                # Type checking
+```
+
+### Building Documentation
+
+```bash
+pip install -e ".[docs]"
+mkdocs serve            # Local documentation server
+mkdocs build            # Build static site
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](https://vipulsinghal02.github.io/NullStrike/dev/contributing/) for details on:
+
+- Setting up the development environment
+- Code style and testing requirements
+- Submitting pull requests
+- Reporting issues
+
+## 📄 License
+
+NullStrike is released under the [GNU General Public License v3.0](LICENSE).
+
+The core STRIKE-GOLDD algorithm implementation is adapted from StrikePy, which implements the MATLAB STRIKE-GOLDD toolbox in Python. See [ATTRIBUTION.md](ATTRIBUTION.md) for detailed attribution.
+
+## 🏆 Citation
+
+If you use NullStrike in your research, please cite:
+
+```bibtex
+@software{nullstrike2025,
+  title = {NullStrike: Enhanced Structural Identifiability Analysis with Nullspace Parameter Combinations},
+  author = {Vipul Singhal},
+  year = {2025},
+  url = {https://github.com/vipulsinghal02/NullStrike}
+}
+```
+
+## 🆘 Getting Help
+
+- **Documentation**: [https://vipulsinghal02.github.io/NullStrike/](https://vipulsinghal02.github.io/NullStrike/)
+- **Issues**: [GitHub Issues](https://github.com/vipulsinghal02/NullStrike/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/vipulsinghal02/NullStrike/discussions)
 
 ---
 
-!!! tip "Need Help?"
-    
-    - Check out the [Quick Start guide](quickstart.md) for immediate setup
-    - Browse [Examples](examples/simple.md) for common use cases  
-    - See [API Reference](api/core.md) for programmatic usage
-    - Visit the [GitHub repository](https://github.com/vipulsinghal02/NullStrike) for issues and contributions
+**NullStrike**: *From "parameters are unidentifiable" to "these combinations ARE identifiable"* 🎯
