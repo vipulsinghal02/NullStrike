@@ -1,7 +1,10 @@
 site_name: NullStrike Documentation
 site_description: Structural identifiability analysis with nullspace parameter combinations
 site_author: Vipul Singhal
-site_url: https://vipulsinghal02.github.io/nullstrike/
+site_url: https://vipulsinghal02.github.io/NullStrike/
+repo_url: https://github.com/vipulsinghal02/NullStrike
+repo_name: vipulsinghal02/NullStrike
+edit_uri: edit/main/docs/
 
 theme:
   name: material
@@ -23,30 +26,62 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.tracking
     - search.highlight
+    - search.suggest
     - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+    - content.tabs.link
 
 nav:
   - Home: index.md
   - Getting Started:
     - Installation: installation.md
     - Quick Start: quickstart.md
+    - First Analysis: getting-started/first-analysis.md
+  - Mathematical Foundations:
+    - Theory Overview: theory/overview.md
+    - STRIKE-GOLDD Method: theory/strike-goldd.md
+    - Nullspace Analysis: theory/nullspace.md
+    - Observability & Identifiability: theory/observability.md
+    - Lie Derivatives: theory/lie-derivatives.md
   - User Guide:
-    - Mathematical Background: background.md
-    - Model Definition: models.md
-    - Configuration: configuration.md
-    - Running Analysis: usage.md
-  - Results & Interpretation:
-    - Understanding Output: interpretation.md
-    - Visualizations: visualizations.md
-    - File Outputs: outputs.md
-  - Examples:
+    - Model Definition: guide/models.md
+    - Configuration Files: guide/configuration.md
+    - Command Line Usage: guide/cli-usage.md
+    - Python API: guide/python-api.md
+  - Examples & Tutorials:
+    - Simple Example: examples/simple.md
     - Two-Compartment Model: examples/c2m.md
     - Calibration Model: examples/calibration.md
-  - API Reference: api.md
-  - Advanced:
-    - Checkpointing: checkpointing.md
-    - Performance Tips: performance.md
+    - Bolie Model: examples/bolie.md
+    - Custom Models: examples/custom.md
+  - Results & Analysis:
+    - Understanding Output: results/interpretation.md
+    - Visualizations: results/visualizations.md
+    - File Structure: results/file-outputs.md
+    - Parameter Combinations: results/parameter-combinations.md
+  - Advanced Features:
+    - Batch Processing: advanced/batch.md
+    - Custom Workflows: advanced/workflows.md
+    - Tool Integration: advanced/integration.md
+    - Visualization Customization: advanced/visualization.md
+    - Performance for Large Models: advanced/performance.md
+    - Troubleshooting: advanced/troubleshooting.md
+    - Mathematical Extensions: advanced/extensions.md
+  - API Reference:
+    - Core Module: api/core.md
+    - Analysis Module: api/analysis.md
+    - Visualization Module: api/visualization.md
+    - CLI Module: api/cli.md
+  - Development:
+    - Contributing: dev/contributing.md
+    - Architecture: dev/architecture.md
+    - Testing: dev/testing.md
+    - API Development: dev/api-development.md
+    - Performance Optimization: dev/performance.md
+    - Release Procedures: dev/release.md
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -71,4 +106,14 @@ extra_javascript:
 
 plugins:
   - search
-  - mkdocstringssite_name: My Docs
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            show_source: true
+            show_bases: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_object_full_path: false
