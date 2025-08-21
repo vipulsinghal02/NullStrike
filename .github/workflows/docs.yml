@@ -11,6 +11,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read  # Added for better GitHub Actions integration
 
 # Allow only one concurrent deployment
 concurrency:
@@ -30,7 +31,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # Updated to newer Python version
+          python-version: '3.11'
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -46,12 +47,32 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-docs.txt
 
-      - name: Setup Pages
+      - name: Setup Pages (with error handling)
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         id: pages
+        continue-on-error: true
         uses: actions/configure-pages@v4
-        with:
-          enablement: true  # Explicitly enable Pages if not already enabled
+
+      - name: Get Pages URL (fallback)
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.pages.outcome == 'failure'
+        id: pages-fallback
+        run: |
+          echo "Pages setup failed, using repository-based URL"
+          echo "base_url=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_OUTPUT
+
+      - name: Configure MkDocs site_url
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          if [ "${{ steps.pages.outcome }}" == "success" ]; then
+            SITE_URL="${{ steps.pages.outputs.base_url }}"
+          else
+            SITE_URL="${{ steps.pages-fallback.outputs.base_url }}"
+          fi
+          echo "Using site URL: $SITE_URL"
+          # Update mkdocs.yml if it exists with the correct site_url
+          if [ -f mkdocs.yml ]; then
+            sed -i "s|site_url:.*|site_url: $SITE_URL|" mkdocs.yml
+          fi
 
       - name: Build documentation
         run: |
