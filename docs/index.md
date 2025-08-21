@@ -1,10 +1,10 @@
 # NullStrike Documentation
 
-Welcome to **NullStrike** - a powerful tool for structural identifiability analysis of nonlinear dynamical systems with advanced nullspace analysis capabilities.
+Welcome to **NullStrike** - a tool for structural identifiability analysis of nonlinear dynamical systems with advanced nullspace analysis capabilities.
 
 ## What is NullStrike?
 
-NullStrike extends the capabilities of StrikePy (a Python implementation of STRIKE-GOLDD) by adding sophisticated nullspace analysis to determine not just which parameters are unidentifiable, but which **parameter combinations are identifiable** even when individual parameters are not.
+NullStrike extends the capabilities of StrikePy (a Python implementation of STRIKE-GOLDD) by adding nullspace analysis to determine not just which parameters are unidentifiable, but which **parameter combinations are identifiable/unidentifiable** even when individual parameters are not.
 
 ### The Core Problem
 
@@ -20,7 +20,7 @@ In many dynamical systems, individual parameters may be unidentifiable, but spec
 === "Mathematical Foundation"
     
     - **STRIKE-GOLDD Algorithm**: Structural identifiability analysis using Lie derivatives
-    - **Nullspace Analysis**: $\mathcal{N} = \text{Matrix}(\text{nullspace\_vectors})$
+    - **Nullspace Analysis**: $\mathcal{N} = \text{Matrix}(\text{nullspace_vectors})$
     - **Identifiable Directions**: $\text{identifiable\_directions} = \mathcal{N}.\text{nullspace}()$
     - **Symbolic Computation**: Full symbolic analysis using SymPy
 
