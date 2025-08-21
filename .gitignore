@@ -1,0 +1,28 @@
+# Python-specific
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+pythonProject/
+venv/
+env/
+.pytest_cache/
+*.egg-info/
+
+# Project-specific files
+textd.txt
+differ.py
+CLD_backups.md
+CLAUDE.md
+todo.md
+.DS_Store
+**/.DS_Store
+*.swp
+*~
+
+# Directories with temporary or generated files
+checkpoints/
+results/
+models/
+.claude/
