@@ -6,7 +6,7 @@
 
 **NullStrike** is an advanced structural identifiability analysis tool that extends StrikePy (Python implementation of STRIKE-GOLDD) with sophisticated **nullspace analysis** capabilities. While traditional methods only identify which parameters are unidentifiable, NullStrike determines which **parameter combinations are identifiable** even when individual parameters are not.
 
-## 🎯 What Makes NullStrike Different
+## What Makes NullStrike Different
 
 Traditional structural identifiability analysis tells you *which parameters cannot be identified*. NullStrike goes further by discovering *which parameter combinations CAN be identified*, providing actionable insights for experimental design and parameter estimation.
 
@@ -22,7 +22,7 @@ Identifiable Combinations: I = nullspace(N) ← what you CAN estimate
 
 If the nullspace has dimension *k*, then *(total_parameters - k)* independent parameter combinations are identifiable.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -55,7 +55,7 @@ results = main('C2M', 'options_C2M')
 # Results include parameter combinations, visualizations, and detailed reports
 ```
 
-## 📊 Example Results
+## Example Results
 
 ### Two-Compartment Pharmacokinetic Model
 
@@ -64,9 +64,9 @@ For a typical PK model with parameters `k12`, `k21`, `V1`, `V2`:
 **Traditional Analysis**: *"All parameters are unidentifiable"*
 
 **NullStrike Analysis**: 
-- ✅ **Identifiable combinations**: `k12×V1`, `k21×V2`, `(k12+k21+k10)×V1`
-- 🔍 **Nullspace dimension**: 1 (out of 4 parameters)
-- 📈 **3 independent combinations** can be reliably estimated
+- **Identifiable combinations**: `k12×V1`, `k21×V2`, `(k12+k21+k10)×V1`
+- **Nullspace dimension**: 1 (out of 4 parameters)
+- **3 independent combinations** can be reliably estimated
 
 ### Visualization Outputs
 
@@ -77,7 +77,7 @@ NullStrike generates comprehensive visual analysis:
 - **Graph Networks**: Parameter dependency visualization
 - **Detailed Reports**: Mathematical interpretations
 
-## 🧮 Mathematical Foundation
+## Mathematical Foundation
 
 NullStrike implements structural identifiability analysis using:
 
@@ -102,7 +102,7 @@ $$\begin{align}
 ### Symbolic Computation
 Full symbolic analysis ensures exact mathematical relationships without numerical approximation errors.
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 NullStrike/
@@ -117,7 +117,7 @@ NullStrike/
 └── docs/                 # Comprehensive documentation
 ```
 
-## 📚 Model Definition
+## Model Definition
 
 Define your dynamical system in `custom_models/my_model.py`:
 
@@ -156,7 +156,7 @@ nnzDerU = [0]           # Known input derivative limits
 prev_ident_pars = []    # Previously identified parameters
 ```
 
-## 🔧 Advanced Features
+## Advanced Features
 
 - **Checkpointing System**: Intelligent caching avoids recomputation
 - **Batch Processing**: Analyze multiple models efficiently  
@@ -164,7 +164,7 @@ prev_ident_pars = []    # Previously identified parameters
 - **Graph Analysis**: Network representation of dependencies
 - **Comprehensive Reports**: Mathematical interpretations and actionable insights
 
-## 📖 Documentation
+## Documentation
 
 **[Full Documentation](https://vipulsinghal02.github.io/NullStrike/)** includes:
 
@@ -174,7 +174,7 @@ prev_ident_pars = []    # Previously identified parameters
 - **[Examples & Tutorials](https://vipulsinghal02.github.io/NullStrike/examples/simple/)**: Step-by-step walkthroughs
 - **[API Reference](https://vipulsinghal02.github.io/NullStrike/api/core/)**: Complete code documentation
 
-## 🧪 Development
+## Development
 
 ### Running Tests
 
@@ -199,7 +199,7 @@ mkdocs serve            # Local documentation server
 mkdocs build            # Build static site
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](https://vipulsinghal02.github.io/NullStrike/dev/contributing/) for details on:
 
@@ -208,13 +208,13 @@ We welcome contributions! Please see our [Contributing Guide](https://vipulsingh
 - Submitting pull requests
 - Reporting issues
 
-## 📄 License
+## License
 
 NullStrike is released under the [GNU General Public License v3.0](LICENSE).
 
 The core STRIKE-GOLDD algorithm implementation is adapted from StrikePy, which implements the MATLAB STRIKE-GOLDD toolbox in Python. See [ATTRIBUTION.md](ATTRIBUTION.md) for detailed attribution.
 
-## 🏆 Citation
+## Citation
 
 If you use NullStrike in your research, please cite:
 
@@ -227,7 +227,7 @@ If you use NullStrike in your research, please cite:
 }
 ```
 
-## 🆘 Getting Help
+## Getting Help
 
 - **Documentation**: [https://vipulsinghal02.github.io/NullStrike/](https://vipulsinghal02.github.io/NullStrike/)
 - **Issues**: [GitHub Issues](https://github.com/vipulsinghal02/NullStrike/issues)
@@ -235,4 +235,4 @@ If you use NullStrike in your research, please cite:
 
 ---
 
-**NullStrike**: *From "parameters are unidentifiable" to "these combinations ARE identifiable"* 🎯
+**NullStrike**: *From "parameters are unidentifiable" to "these combinations ARE identifiable"*

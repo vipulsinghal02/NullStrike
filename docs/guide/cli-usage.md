@@ -230,27 +230,27 @@ Total computation time: 45.3 seconds
 === "Success Messages"
 
     ```
-    ✓ Model loaded successfully
-    ✓ Observability matrix computed (rank: 6)
-    ✓ Nullspace analysis complete
-    ✓ Visualizations generated
-    ✓ Results saved to results/C2M/
+    Model loaded successfully
+    Observability matrix computed (rank: 6)
+    Nullspace analysis complete
+    Visualizations generated
+    Results saved to results/C2M/
     ```
 
 === "Warning Messages"
 
     ```
-    ⚠ Large symbolic expressions detected
-    ⚠ Computation time exceeded 2 minutes
-    ⚠ Some parameters may be numerically sensitive
+    WARNING: Large symbolic expressions detected
+    WARNING: Computation time exceeded 2 minutes
+    WARNING: Some parameters may be numerically sensitive
     ```
 
 === "Error Messages"
 
     ```
-    ✗ Error: Model file 'my_model.py' not found
-    ✗ Error: Invalid options file 'options_bad.py'
-    ✗ Error: Symbolic computation failed
+    ERROR: Model file 'my_model.py' not found
+    ERROR: Invalid options file 'options_bad.py'
+    ERROR: Symbolic computation failed
     ```
 
 ## Advanced Usage
@@ -286,9 +286,9 @@ for model in "${models[@]}"; do
     nullstrike "$model" --parameters-only
     
     if [ $? -eq 0 ]; then
-        echo "✓ $model analysis complete"
+        echo "$model analysis complete"
     else
-        echo "✗ $model analysis failed"
+        echo "ERROR: $model analysis failed"
     fi
 done
 ```

@@ -9,7 +9,7 @@ description = "Enhanced structural identifiability analysis with nullspace param
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "Vipul Singhal", email = "vs@alumni.caltech.edu"}
 ]
 classifiers = [
     "Development Status :: 4 - Beta",

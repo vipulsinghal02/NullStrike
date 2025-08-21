@@ -364,11 +364,11 @@ After mastering this simple example:
 
 This simple linear example demonstrates:
 
-- ✅ **Basic NullStrike workflow**: Model definition → Configuration → Analysis → Results
-- ✅ **Identifiability concepts**: What it means for parameters to be identifiable
-- ✅ **Result interpretation**: Understanding analysis output and physical meaning
-- ✅ **Experimental design**: How identifiability analysis guides experiments
-- ✅ **Mathematical foundations**: Observability matrices, Jacobians, and rank analysis
+- **Basic NullStrike workflow**: Model definition → Configuration → Analysis → Results
+- **Identifiability concepts**: What it means for parameters to be identifiable
+- **Result interpretation**: Understanding analysis output and physical meaning
+- **Experimental design**: How identifiability analysis guides experiments
+- **Mathematical foundations**: Observability matrices, Jacobians, and rank analysis
 
 The key insight is that **even simple systems provide valuable insights** when analyzed systematically. This foundation prepares you to tackle more complex nonlinear systems where the relationship between model structure and identifiability becomes much more subtle.
 

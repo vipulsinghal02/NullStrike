@@ -369,10 +369,10 @@ class QAChecker:
             try:
                 check()
                 self.passed_checks.append(check.__name__)
-                print(f"✓ {check.__name__}")
+                print(f"PASS: {check.__name__}")
             except Exception as e:
                 self.failed_checks.append((check.__name__, str(e)))
-                print(f"✗ {check.__name__}: {e}")
+                print(f"FAIL: {check.__name__}: {e}")
         
         self.print_summary()
         
@@ -784,7 +784,7 @@ Dear NullStrike Community,
 
 We're excited to announce the release of NullStrike v1.2.0! This release includes significant new features, performance improvements, and bug fixes.
 
-## 🚀 What's New
+## What's New
 
 ### Major Features
 - Fisher Information Matrix analysis plugin
@@ -802,29 +802,29 @@ We're excited to announce the release of NullStrike v1.2.0! This release include
 - Corrected parameter combination identification edge cases
 - Fixed compatibility issues with SymPy 1.12
 
-## 📦 Installation
+## Installation
 
 ```bash
 pip install --upgrade nullstrike
 ```
 
-## 🔍 Verification
+## Verification
 
 ```bash
 nullstrike --version
 nullstrike C2M --parameters-only
 ```
 
-## 📚 Documentation
+## Documentation
 
 Updated documentation is available at: https://vipulsinghal02.github.io/NullStrike/
 
-## 🙏 Contributors
+## Contributors
 
 Special thanks to all contributors who made this release possible:
 - [List of contributors]
 
-## 🐛 Reporting Issues
+## Reporting Issues
 
 If you encounter any issues, please report them at:
 https://github.com/vipulsinghal02/NullStrike/issues
@@ -926,14 +926,14 @@ Security releases: Immediate for vulnerabilities
 
 | Issue Type | Patch | Minor | Major |
 |------------|-------|-------|-------|
-| Bug fix | ✓ | ✓ | ✓ |
-| New feature | ✗ | ✓ | ✓ |
-| Performance improvement | ✓ | ✓ | ✓ |
-| API change (backward compatible) | ✗ | ✓ | ✓ |
-| Breaking change | ✗ | ✗ | ✓ |
-| Documentation | ✓ | ✓ | ✓ |
-| Dependency update (major) | ✗ | ✓ | ✓ |
-| Security fix | ✓ | ✓ | ✓ |
+| Bug fix | Yes | Yes | Yes |
+| New feature | No | Yes | Yes |
+| Performance improvement | Yes | Yes | Yes |
+| API change (backward compatible) | No | Yes | Yes |
+| Breaking change | No | No | Yes |
+| Documentation | Yes | Yes | Yes |
+| Dependency update (major) | No | Yes | Yes |
+| Security fix | Yes | Yes | Yes |
 
 This comprehensive release process ensures that NullStrike releases are high-quality, well-documented, and properly communicated to the community. The combination of automated testing, manual QA checks, and systematic versioning provides confidence in each release.
 

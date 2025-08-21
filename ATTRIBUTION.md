@@ -10,7 +10,7 @@ NullStrike builds upon and extends the StrikePy package, which is a Python imple
 - **Author**: David Rey Rostro (davidreyrostro@gmail.com)  
 - **License**: GPL-3.0
 - **Description**: Python implementation of STRIKE-GOLDD for structural identifiability analysis
-- **Original Repository**: [Link to original StrikePy if available]
+- **Original Repository**: [[StrikePy](https://github.com/afvillaverde/StrikePy/tree/main)]
 
 **STRIKE-GOLDD** (Original Algorithm)
 - **Author**: Alejandro Fernandez Villaverde (afvillaverde@uvigo.gal)
@@ -21,7 +21,7 @@ NullStrike builds upon and extends the StrikePy package, which is a Python imple
 ### NullStrike Extensions
 
 **Enhanced Nullspace Analysis** 
-- **Authors**: [Your Name(s)]
+- **Authors**: [Vipul Singhal]
 - **License**: GPL-3.0 (to comply with StrikePy licensing)
 - **Description**: Advanced nullspace analysis to identify parameter combinations that are structurally identifiable
 
@@ -50,7 +50,7 @@ If you use NullStrike in your research, please cite both the original works and 
   title={NullStrike: Enhanced Structural Identifiability Analysis with Nullspace Parameter Combinations},
   author={[Your Name]},
   year={2024},
-  url={https://github.com/yourusername/nullstrike},
+  url={https://github.com/vipulsinghal02/nullstrike},
   note={Built upon StrikePy by David Rey Rostro and STRIKE-GOLDD by Alejandro Fernandez Villaverde}
 }
 

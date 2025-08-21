@@ -671,10 +671,10 @@ class ComparativeAnalysisWorkflow(AnalysisWorkflow):
                 method_result = self._run_single_method(method)
                 results[method] = method_result
                 timings[method] = time.time() - start_time
-                logger.info(f"✓ {method} completed in {timings[method]:.2f}s")
+                logger.info(f"SUCCESS: {method} completed in {timings[method]:.2f}s")
                 
             except Exception as e:
-                logger.error(f"✗ {method} failed: {str(e)}")
+                logger.error(f"FAILED: {method} failed: {str(e)}")
                 results[method] = None
                 timings[method] = None
         
@@ -782,13 +782,13 @@ class ComparativeResults(AnalysisResults):
             timing = self.timings.get(method)
             
             if result is not None:
-                report.append(f"✓ {method}: Success ({timing:.2f}s)")
+                report.append(f"PASS: {method}: Success ({timing:.2f}s)")
                 if hasattr(result, 'identifiable_parameters'):
                     report.append(f"  Identifiable parameters: {len(result.identifiable_parameters)}")
                 if hasattr(result, 'condition_number'):
                     report.append(f"  Condition number: {result.condition_number:.2e}")
             else:
-                report.append(f"✗ {method}: Failed")
+                report.append(f"FAIL: {method}: Failed")
             report.append("")
         
         # Comparison summary

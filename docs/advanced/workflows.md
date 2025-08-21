@@ -99,7 +99,7 @@ class WorkflowBase(ABC):
                     'success': True
                 }
                 
-                self.logger.info(f"✓ {step_name} completed in {step_time:.1f}s")
+                self.logger.info(f"SUCCESS: {step_name} completed in {step_time:.1f}s")
                 
             except Exception as e:
                 error_msg = f"Step {step_name} failed: {str(e)}"
@@ -410,9 +410,9 @@ class IdentifiabilityComparisonWorkflow(WorkflowBase):
             report.append("## Method Agreement")
             for comparison_name, agreement_data in comparison['identifiability_agreement'].items():
                 if agreement_data['agreement']:
-                    report.append(f"✓ {comparison_name}: Methods agree")
+                    report.append(f"PASS: {comparison_name}: Methods agree")
                 else:
-                    report.append(f"✗ {comparison_name}: Methods disagree")
+                    report.append(f"FAIL: {comparison_name}: Methods disagree")
                     report.append(f"  - Details: {agreement_data}")
             report.append("")
         

@@ -465,13 +465,13 @@ variables_locales = locals().copy()
 
 ### Mistake 1: Wrong Vector Format
 
-❌ **Incorrect**:
+**Incorrect**:
 ```python
 x = [x1, x2]  # Wrong: not list of lists
 p = [p1, p2]  # Wrong: not list of lists
 ```
 
-✅ **Correct**:
+**Correct**:
 ```python
 x = [[x1], [x2]]  # Correct: list of lists
 p = [[p1], [p2]]  # Correct: list of lists
@@ -479,13 +479,13 @@ p = [[p1], [p2]]  # Correct: list of lists
 
 ### Mistake 2: Inconsistent Dimensions
 
-❌ **Incorrect**:
+**Incorrect**:
 ```python
 x = [[x1], [x2]]     # 2 states
 f = [[-k*x1]]        # Only 1 equation
 ```
 
-✅ **Correct**:
+**Correct**:
 ```python
 x = [[x1], [x2]]           # 2 states
 f = [[-k*x1], [k*x1]]      # 2 equations
@@ -493,14 +493,14 @@ f = [[-k*x1], [k*x1]]      # 2 equations
 
 ### Mistake 3: Missing Variables in Expressions
 
-❌ **Incorrect**:
+**Incorrect**:
 ```python
 # k2 is used in dynamics but not defined in parameters
 p = [[k1]]
 f = [[-k1*x1 + k2*x2]]  # k2 undefined
 ```
 
-✅ **Correct**:
+**Correct**:
 ```python
 p = [[k1], [k2]]        # Both parameters defined
 f = [[-k1*x1 + k2*x2]]  # All variables defined
@@ -508,13 +508,13 @@ f = [[-k1*x1 + k2*x2]]  # All variables defined
 
 ### Mistake 4: Forgetting Required Boilerplate
 
-❌ **Incorrect**:
+**Incorrect**:
 ```python
 # ... model definition ...
 # Missing: variables_locales = locals().copy()
 ```
 
-✅ **Correct**:
+**Correct**:
 ```python
 # ... model definition ...
 variables_locales = locals().copy()  # Required!

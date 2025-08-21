@@ -468,9 +468,9 @@ class NullStrikeDiagnostics:
         
         report.append("## Summary")
         report.append(f"- **Total tests**: {len(self.results)}")
-        report.append(f"- **Passed**: {pass_count} ✓")
-        report.append(f"- **Warnings**: {warning_count} ⚠")
-        report.append(f"- **Failed**: {fail_count} ✗")
+        report.append(f"- **Passed**: {pass_count}")
+        report.append(f"- **Warnings**: {warning_count}")
+        report.append(f"- **Failed**: {fail_count}")
         report.append("")
         
         # Group results by category
@@ -486,7 +486,7 @@ class NullStrikeDiagnostics:
             report.append("")
             
             for result in results:
-                status_icon = {'pass': '✓', 'warning': '⚠', 'fail': '✗'}[result.status]
+                status_icon = {'pass': 'PASS', 'warning': 'WARN', 'fail': 'FAIL'}[result.status]
                 report.append(f"### {result.test_name} {status_icon}")
                 report.append(f"**Status**: {result.status}")
                 report.append(f"**Message**: {result.message}")

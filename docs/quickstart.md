@@ -79,7 +79,7 @@ results/
 
 ### Quick Result Interpretation
 
-=== "✅ Identifiable"
+=== "Identifiable Parameters"
 
     ```
     IDENTIFIABLE PARAMETERS:
@@ -88,7 +88,7 @@ results/
     
     These parameter combinations can be uniquely determined from data.
 
-=== "❌ Unidentifiable"
+=== "Unidentifiable Parameters"
 
     ```
     UNIDENTIFIABLE PARAMETERS:
@@ -98,7 +98,7 @@ results/
     
     These individual parameters cannot be determined, but their combinations might be.
 
-=== "🔗 Parameter Combinations"
+=== "Parameter Combinations"
 
     ```
     IDENTIFIABLE COMBINATIONS:
@@ -206,13 +206,13 @@ print("Check results/ directory for output files")
 
 Traditional identifiability tools tell you **which parameters are unidentifiable**. NullStrike goes further by finding **which parameter combinations are identifiable** even when individual parameters aren't.
 
-### Traditional Analysis ❌
+### Traditional Analysis
 ```
 Parameters k12, k21, V1, V2 are unidentifiable.
 Analysis complete.
 ```
 
-### NullStrike Analysis ✅
+### NullStrike Analysis
 ```
 Individual parameters k12, k21, V1, V2 are unidentifiable.
 

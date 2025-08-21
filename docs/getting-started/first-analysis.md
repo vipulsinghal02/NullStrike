@@ -444,12 +444,12 @@ Now that you've completed your first analysis:
 
 In this tutorial, you learned:
 
-- ✅ How to run a complete NullStrike analysis
-- ✅ How to interpret identifiability results  
-- ✅ How to understand nullspace structure
-- ✅ How to use visualizations for insight
-- ✅ How to apply results to experimental design
-- ✅ How to troubleshoot common issues
+- How to run a complete NullStrike analysis
+- How to interpret identifiability results  
+- How to understand nullspace structure
+- How to use visualizations for insight
+- How to apply results to experimental design
+- How to troubleshoot common issues
 
 The calibration model demonstrates that structural identifiability analysis provides actionable insights for both mathematical understanding and practical experimental design. The combination of individual parameter identifiability, parameter combination analysis, and visualization makes NullStrike a powerful tool for understanding complex dynamical systems.
 

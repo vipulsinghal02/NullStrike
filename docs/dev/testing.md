@@ -606,9 +606,9 @@ class StressTests:
             try:
                 result = NullspaceAnalyzer(model).compute_nullspace()
                 assert result is not None
-                print(f"✓ Handled {n_params}-parameter model successfully")
+                print(f"SUCCESS: Handled {n_params}-parameter model successfully")
             except TimeoutError:
-                print(f"⚠ {n_params}-parameter model exceeded timeout (expected for large models)")
+                print(f"WARNING: {n_params}-parameter model exceeded timeout (expected for large models)")
             finally:
                 signal.alarm(0)  # Cancel timeout
     
@@ -894,7 +894,7 @@ mkdocs build --strict
 echo "6. Example verification..."
 python scripts/verify_examples.py
 
-echo "All tests passed! ✓"
+echo "All tests passed!"
 ```
 
 ## Test Data Management

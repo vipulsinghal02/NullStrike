@@ -506,18 +506,18 @@ def debug_model(model_name):
         is_valid, messages = validate_model(model)
         
         if is_valid:
-            print("✓ Model definition is valid")
+            print("Model definition is valid")
         else:
-            print("✗ Model validation failed:")
+            print("ERROR: Model validation failed:")
             for msg in messages:
                 print(f"  - {msg}")
                 
         # Test basic analysis
         result = main(model_name, parameters_only=True)
-        print(f"✓ Basic analysis successful: {result['rank']} identifiable combinations")
+        print(f"Basic analysis successful: {result['rank']} identifiable combinations")
         
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f"ERROR: {e}")
 ```
 
 ### Performance Profiling

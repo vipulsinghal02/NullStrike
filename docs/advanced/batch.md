@@ -49,7 +49,7 @@ def simple_batch_analysis(models, output_dir="batch_results"):
                 'observability_rank': result.nullspace_results.observability_rank
             }
             
-            print(f"✓ {model_name} completed in {analysis_time:.1f}s")
+            print(f"SUCCESS: {model_name} completed in {analysis_time:.1f}s")
             
         except Exception as e:
             results[model_name] = {
@@ -57,7 +57,7 @@ def simple_batch_analysis(models, output_dir="batch_results"):
                 'error': str(e),
                 'analysis_time': None
             }
-            print(f"✗ {model_name} failed: {e}")
+            print(f"FAILED: {model_name} failed: {e}")
     
     # Save summary results
     with open(output_path / "batch_summary.json", 'w') as f:
@@ -197,9 +197,9 @@ class AdvancedBatchProcessor:
                     results.append(result)
                     
                     if result.success:
-                        self.logger.info(f"✓ {job.model_name} completed in {result.analysis_time:.1f}s")
+                        self.logger.info(f"SUCCESS: {job.model_name} completed in {result.analysis_time:.1f}s")
                     else:
-                        self.logger.error(f"✗ {job.model_name} failed: {result.error_message}")
+                        self.logger.error(f"FAILED: {job.model_name} failed: {result.error_message}")
                         
                         # Retry if configured
                         if job.retry_count < job.max_retries:
@@ -209,7 +209,7 @@ class AdvancedBatchProcessor:
                             future_to_job[retry_future] = job
                 
                 except concurrent.futures.TimeoutError:
-                    self.logger.error(f"✗ {job.model_name} timed out after {job.timeout}s")
+                    self.logger.error(f"TIMEOUT: {job.model_name} timed out after {job.timeout}s")
                     results.append(BatchResult(
                         model_name=job.model_name,
                         success=False,
@@ -219,7 +219,7 @@ class AdvancedBatchProcessor:
                     ))
                 
                 except Exception as e:
-                    self.logger.error(f"✗ {job.model_name} crashed: {str(e)}")
+                    self.logger.error(f"CRASHED: {job.model_name} crashed: {str(e)}")
                     results.append(BatchResult(
                         model_name=job.model_name,
                         success=False,
