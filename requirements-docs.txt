@@ -1,0 +1,13 @@
+# Documentation dependencies
+mkdocs>=1.5.0
+mkdocs-material>=9.0.0
+mkdocs-material-extensions>=1.1.0
+pymdown-extensions>=10.0.0
+mkdocstrings[python]>=0.23.0
+
+# Scientific computing dependencies for documentation examples
+sympy>=1.12
+numpy>=1.24.0
+matplotlib>=3.7.0
+networkx>=3.0
+scipy>=1.10.0

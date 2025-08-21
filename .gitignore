@@ -26,3 +26,6 @@ checkpoints/
 results/
 models/
 .claude/
+
+# Documentation build directory
+site/
