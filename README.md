@@ -4,13 +4,13 @@
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Documentation](https://img.shields.io/badge/docs-MkDocs-green.svg)](https://vipulsinghal02.github.io/NullStrike/)
 
-**NullStrike** is a structural identifiability analysis tool that extends StrikePy (Python implementation of STRIKE-GOLDD) with sophisticated **nullspace analysis** capabilities. While traditional methods only identify which parameters are unidentifiable, NullStrike determines which **parameter combinations are identifiable** even when individual parameters are not.
+**NullStrike** is a structural identifiability analysis tool that extends StrikePy (Python implementation of STRIKE-GOLDD) with **nullspace analysis** capabilities. In addition to identifying individual parameters and states that are unidentifiable, NullStrike determines which **parameter combinations** are unidentifiable. 
 
-## What Makes NullStrike Different
+<!-- ## What Makes NullStrike Different
 
-Traditional structural identifiability analysis tells you *which parameters cannot be identified*. NullStrike goes further by discovering *which parameter combinations CAN be identified*, providing actionable insights for experimental design and parameter estimation.
+Traditional structural identifiability analysis tells you *which parameters cannot be identified*. NullStrike goes further by discovering *which parameter combinations CAN be identified*, providing actionable insights for experimental design and parameter estimation. -->
 
-### Key Innovation: Nullspace Analysis
+### Nullspace Analysis
 
 The mathematical foundation is:
 
@@ -20,7 +20,7 @@ Nullspace: N = nullspace(O) ← unidentifiable directions
 Identifiable Combinations: I = nullspace(N) ← what you CAN estimate
 ```
 
-If the nullspace has dimension *k*, then *(total_parameters - k)* independent parameter combinations are identifiable.
+If the nullspace has dimension *k*, then *(total_parameters - k)* independent parameter combinations are identifiable. 
 
 ## Quick Start
 
@@ -33,7 +33,7 @@ cd NullStrike
 pip install -e .
 ```
 
-### Basic Usage
+### Usage
 
 ```bash
 # Analyze built-in models
@@ -100,7 +100,7 @@ $$\begin{align}
 \end{align}$$
 
 ### Symbolic Computation
-Full symbolic analysis ensures exact mathematical relationships without numerical approximation errors.
+Symbolic analysis ensures exact mathematical relationships without numerical approximation errors.
 
 ## Project Structure
 

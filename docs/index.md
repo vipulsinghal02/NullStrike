@@ -1,10 +1,10 @@
 # NullStrike Documentation
 
-Welcome to **NullStrike** - a tool for structural identifiability analysis of nonlinear dynamical systems with advanced nullspace analysis capabilities.
+Welcome to **NullStrike** - a tool for structural identifiability and observability analysis of nonlinear dynamical systems with nullspace analysis capabilities.
 
 ## What is NullStrike?
 
-NullStrike extends the capabilities of StrikePy (a Python implementation of STRIKE-GOLDD) by adding nullspace analysis to determine not just which parameters are unidentifiable, but which **parameter combinations are identifiable/unidentifiable** even when individual parameters are not.
+NullStrike extends the capabilities of StrikePy (a Python implementation of STRIKE-GOLDD) by adding nullspace analysis to determine not just which parameters are unidentifiable, but which **parameter combinations** are identifiable/unidentifiable even when individual parameters are not.
 
 ### The Core Problem
 
@@ -13,7 +13,7 @@ In many dynamical systems, individual parameters may be unidentifiable, but spec
 1. **Computing the observability-identifiability matrix** using Lie derivatives
 2. **Analyzing the nullspace** to find unidentifiable directions  
 3. **Identifying the row space** containing identifiable parameter combinations
-4. **Visualizing these relationships** through 3D manifolds and constraint graphs
+4. **Visualizing these relationships** through 3D and 2D manifolds and constraint graphs
 
 ## Key Features
 
@@ -21,7 +21,7 @@ In many dynamical systems, individual parameters may be unidentifiable, but spec
     
     - **STRIKE-GOLDD Algorithm**: Structural identifiability analysis using Lie derivatives
     - **Nullspace Analysis**: $\mathcal{N} = \text{Matrix}(\text{nullspace_vectors})$
-    - **Identifiable Directions**: $\text{identifiable\_directions} = \mathcal{N}.\text{nullspace}()$
+    - **Identifiable Directions**: $\text{identifiable_directions} = \mathcal{N}.\text{nullspace}()$
     - **Symbolic Computation**: Full symbolic analysis using SymPy
 
 === "Visualization & Analysis"
@@ -104,7 +104,9 @@ NullStrike generates comprehensive analysis including:
     - **Graph analysis**: Parameter dependency networks
 
 ## Mathematical Background
-
+<!--
+#TODO explain the math part a little more thoroughly (define terms, explain thing. Either here or in the theory section.)
+-->
 The core mathematical relationship in NullStrike is:
 
 $$\begin{align}
@@ -117,7 +119,7 @@ Where:
 - $\mathcal{O}$ is the observability-identifiability matrix
 - $\mathcal{L}_f^k h$ are the $k$-th Lie derivatives  
 - $\mathcal{N}$ contains unidentifiable directions
-- $\mathcal{I}$ contains identifiable parameter combinations
+- $\mathcal{I}$ contains identifiable directions
 
 ## Navigation Guide
 
@@ -128,10 +130,10 @@ Where:
 - **[API Reference](api/core.md)**: Detailed code documentation
 
 ---
-
+<!-- 
 !!! tip "Need Help?"
     
     - Check out the [Quick Start guide](quickstart.md) for immediate setup
     - Browse [Examples](examples/simple.md) for common use cases  
     - See [API Reference](api/core.md) for programmatic usage
-    - Visit the [GitHub repository](https://github.com/vipulsinghal02/NullStrike) for issues and contributions
+    - Visit the [GitHub repository](https://github.com/vipulsinghal02/NullStrike) for issues and contributions -->
