@@ -1,6 +1,6 @@
 # NullStrike Documentation
 
-Welcome to **NullStrike** - a tool for structural identifiability and observability analysis of nonlinear dynamical systems with nullspace analysis capabilities.
+NullStrike is a tool for structural identifiability and observability analysis of nonlinear dynamical systems with nullspace analysis capabilities. 
 
 ## What is NullStrike?
 
@@ -14,7 +14,7 @@ In many dynamical systems, individual parameters may be unidentifiable, but spec
 2. **Analyzing the nullspace** to find unidentifiable directions  
 3. **Identifying the row space** containing identifiable parameter combinations
 4. **Visualizing these relationships** through 3D and 2D manifolds and constraint graphs
-
+<!--
 ## Key Features
 
 === "Mathematical Foundation"
@@ -37,7 +37,7 @@ In many dynamical systems, individual parameters may be unidentifiable, but spec
     - **CLI Interface**: Simple command-line usage
     - **Python API**: Programmatic access for advanced users
     - **Batch Processing**: Analyze multiple models efficiently
-
+-->
 ## Quick Start
 
 Get started with NullStrike in just a few commands:

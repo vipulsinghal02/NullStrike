@@ -18,7 +18,7 @@ where:
 - $u(t) \in \mathbb{R}^r$ are the **inputs** (known functions of time)
 - $y(t) \in \mathbb{R}^q$ are the **outputs** (measured quantities)
 
-**The fundamental question**: Which parameters (or parameter combinations) can be uniquely determined from input-output data $\{u(t), y(t)\}_{t \geq 0}$?
+**The fundamental question**: Which parameters (or parameter combinations) can be uniquely determined from output data $\{y(t)\}_{t \geq 0}$ given inputs, initial conditions, and model structure ($f$, $h$).?
 
 ## Traditional Identifiability vs. NullStrike Approach
 
