@@ -42,6 +42,8 @@ nav:
   - Examples: examples.md
   - Reference: reference.md
   - Contributing: contributing.md
+  - Quick Reference Cheat Sheet: QUICK_REFERENCE.md
+  - Attribution: ATTRIBUTION.md
 
 markdown_extensions:
   - pymdownx.highlight:

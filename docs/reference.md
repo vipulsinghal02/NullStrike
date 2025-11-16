@@ -678,4 +678,4 @@ from nullstrike.visualization.manifolds import visualize_nullspace_manifolds
 - [Theory](theory.md) - Mathematical foundations
 - [Examples](examples.md) - Step-by-step tutorials
 - [Quickstart](quickstart.md) - Get started quickly
-- [QUICK_REFERENCE.md](https://github.com/vipulsinghal02/NullStrike/blob/main/QUICK_REFERENCE.md) - One-page cheat sheet
+- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - One-page cheat sheet
