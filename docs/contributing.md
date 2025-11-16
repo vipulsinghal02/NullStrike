@@ -555,7 +555,7 @@ NullStrike builds on:
 - **StrikePy** by David Rey Rostro (Python implementation)
 - **STRIKE-GOLDD** by Alejandro Fernandez Villaverde (original MATLAB)
 
-See [ATTRIBUTION.md](../ATTRIBUTION.md) for detailed attribution.
+See [ATTRIBUTION.md](https://github.com/vipulsinghal02/NullStrike/blob/main/ATTRIBUTION.md) for detailed attribution.
 
 ---
 
