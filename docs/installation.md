@@ -243,9 +243,9 @@ pip install pytest pytest-cov sphinx mkdocs mkdocs-material
 After successful installation:
 
 1. **[Quick Start Guide](quickstart.md)**: Get started with immediate examples
-2. **[First Analysis](getting-started/first-analysis.md)**: Step-by-step tutorial
-3. **[User Guide](guide/models.md)**: Learn about model definition and configuration
-4. **[Examples](examples/simple.md)**: Explore practical use cases
+2. **[First Analysis](quickstart.md)**: Step-by-step tutorial
+3. **[User Guide](reference.md)**: Learn about model definition and configuration
+4. **[Examples](examples.md)**: Explore practical use cases
 
 ## Getting Help
 

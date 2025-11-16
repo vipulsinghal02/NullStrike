@@ -235,11 +235,11 @@ This information is crucial for:
 
 Now that you've run your first analyses:
 
-1. **[Understand the theory](theory/overview.md)**: Learn the mathematical foundations
-2. **[Deep dive tutorial](getting-started/first-analysis.md)**: Step-by-step walkthrough
-3. **[Explore examples](examples/simple.md)**: See more complex models
-4. **[Model definition guide](guide/models.md)**: Learn to define your own models
-5. **[Results interpretation](results/interpretation.md)**: Understand the output files
+1. **[Understand the theory](theory.md)**: Learn the mathematical foundations
+2. **[Deep dive tutorial](quickstart.md)**: Step-by-step walkthrough
+3. **[Explore examples](examples.md)**: See more complex models
+4. **[Model definition guide](reference.md)**: Learn to define your own models
+5. **[Results interpretation](examples.md)**: Understand the output files
 
 ## Common Use Cases
 
@@ -291,5 +291,5 @@ Now that you've run your first analyses:
 !!! question "Need Help?"
     
     - **Stuck?** Check the [troubleshooting guide](installation.md#troubleshooting)
-    - **Want more examples?** Browse the [examples section](examples/simple.md)
+    - **Want more examples?** Browse the [examples section](examples.md)
     - **Questions?** Open an issue on [GitHub](https://github.com/vipulsinghal02/NullStrike/issues)

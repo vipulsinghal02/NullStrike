@@ -168,11 +168,12 @@ prev_ident_pars = []    # Previously identified parameters
 
 **[Full Documentation](https://vipulsinghal02.github.io/NullStrike/)** includes:
 
-- **[Installation Guide](https://vipulsinghal02.github.io/NullStrike/installation/)**: Detailed setup instructions
-- **[Mathematical Theory](https://vipulsinghal02.github.io/NullStrike/theory/overview/)**: STRIKE-GOLDD and nullspace analysis
-- **[User Guide](https://vipulsinghal02.github.io/NullStrike/guide/models/)**: Model definition and configuration  
-- **[Examples & Tutorials](https://vipulsinghal02.github.io/NullStrike/examples/simple/)**: Step-by-step walkthroughs
-- **[API Reference](https://vipulsinghal02.github.io/NullStrike/api/core/)**: Complete code documentation
+- **[Quick Start](https://vipulsinghal02.github.io/NullStrike/quickstart/)**: Get started in 5 minutes
+- **[Installation](https://vipulsinghal02.github.io/NullStrike/installation/)**: Setup instructions
+- **[Theory](https://vipulsinghal02.github.io/NullStrike/theory/)**: Mathematical foundations
+- **[Examples](https://vipulsinghal02.github.io/NullStrike/examples/)**: Step-by-step tutorials
+- **[Reference](https://vipulsinghal02.github.io/NullStrike/reference/)**: Complete API and CLI reference
+- **[Contributing](https://vipulsinghal02.github.io/NullStrike/contributing/)**: Development guide
 
 ## Development
 

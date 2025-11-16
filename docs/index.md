@@ -124,16 +124,16 @@ Where:
 ## Navigation Guide
 
 - **[Getting Started](installation.md)**: Installation and setup
-- **[Mathematical Foundations](theory/overview.md)**: Theory and algorithms  
-- **[User Guide](guide/models.md)**: Practical usage instructions
-- **[Examples](examples/simple.md)**: Step-by-step tutorials
-- **[API Reference](api/core.md)**: Detailed code documentation
+- **[Mathematical Foundations](theory.md)**: Theory and algorithms  
+- **[User Guide](reference.md)**: Practical usage instructions
+- **[Examples](examples.md)**: Step-by-step tutorials
+- **[API Reference](reference.md)**: Detailed code documentation
 
 ---
 <!-- 
 !!! tip "Need Help?"
     
     - Check out the [Quick Start guide](quickstart.md) for immediate setup
-    - Browse [Examples](examples/simple.md) for common use cases  
-    - See [API Reference](api/core.md) for programmatic usage
+    - Browse [Examples](examples.md) for common use cases  
+    - See [API Reference](reference.md) for programmatic usage
     - Visit the [GitHub repository](https://github.com/vipulsinghal02/NullStrike) for issues and contributions -->
