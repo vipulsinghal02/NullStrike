@@ -20,6 +20,8 @@ todo.md
 **/.DS_Store
 *.swp
 *~
+DOCUMENTATION_SETUP_GUIDE.md
+GITHUB_PAGES_SETUP.md
 
 # Directories with temporary or generated files
 checkpoints/
