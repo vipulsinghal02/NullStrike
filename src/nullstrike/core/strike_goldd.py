@@ -21,11 +21,13 @@ from .functions.rationalize import rationalize_all_numbers
 from .functions.elim_and_recalc import elim_and_recalc
 from datetime import datetime
 
-# Add current working directory to Python path to find custom_options and custom_models
+# Add current working directory to Python path to find custom_options and 
+# custom_models
 if os.getcwd() not in sys.path:
     sys.path.insert(0, os.getcwd())
 
-# Get the project root directory (4 levels up from this file: src/nullstrike/core/strike_goldd.py)
+# Get the project root directory (4 levels up from this file: 
+# src/nullstrike/core/strike_goldd.py)
 PROJECT_ROOT = Path(__file__).parent.parent.parent.parent
 RESULTS_DIR = PROJECT_ROOT / "results"
 
@@ -52,17 +54,20 @@ def strike_goldd(*args, model_name_override=None):
     from .functions.elim_and_recalc import elim_and_recalc
     import symbtools as st
 
-    # If no parameters are passed when calling the function the default options file is used
+    # If no parameters are passed when calling the function the default 
+    # options file is used
     if len(args) == 0:
         from ..configs import default_options as options
         model = importlib.import_module('custom_models.{}'.format(options.modelname))
         print(' Analyzing the {} model... \n'.format(options.modelname))
 
-    # If the name of a file located in the custom_options folder is passed as a parameter to the function, this file is used as the options for the analysis.
+    # If the name of a file located in the custom_options folder is passed as a 
+    # parameter to the function, this file is used as the options for the analysis.
     if len(args) == 1:
         options = importlib.import_module('custom_options.{}'.format(args[0]))
         
-        # Handle case where options file has empty modelname (using default options with specific model)
+        # Handle case where options file has empty modelname (using default 
+        # options with specific model)
         if hasattr(options, 'modelname') and options.modelname == '' and model_name_override:
             actual_model_name = model_name_override
         else:
@@ -85,7 +90,8 @@ def strike_goldd(*args, model_name_override=None):
     skip_elim       = 0
     isFISPO         = 0
     ########################################################################
-    # Remove unknown parameters that have already been classified as identifiable:
+    # Remove unknown parameters that have already been classified as 
+    # identifiable:
     if len(model.p) > 1:
         try:
             len(model.p[0])
@@ -158,7 +164,8 @@ def strike_goldd(*args, model_name_override=None):
     print("{} parameters:\n {}".format(q,np.array(model.p)))
     ########################################################################
     # Check which states are directly measured, if any.
-    # Basically it is checked if any state is directly on the output, then that state is directly measurable.
+    # Basically it is checked if any state is directly on the output, 
+    # then that state is directly measurable.
     if m == 1:
         saidas = model.h
     else:
@@ -206,36 +213,52 @@ def strike_goldd(*args, model_name_override=None):
             meas_x.append([estados[meas_x_indices[i]]])
     ########################################################################
     r = n + q + nw  # number of unknown variables to observe / identify
-    nd = ceil((r - m)/m)  # minimum number of Lie derivatives for Oi to have full rank
-    print('\n\n >>> Building the observability-identifiability matrix requires at least {} Lie derivatives'.format(nd))
+    nd = ceil((r - m)/m)  # minimum number of Lie derivatives for Oi 
+    # to have full rank
+    print('\n\n >>> Building the observability-identifiability matrix requires ' 
+          'at least {} Lie derivatives'.format(nd))
     print('     Calculating derivatives: ', end="")
 
     tic = time()
     ########################################################################
     # Check if the size of nnzDerU and nnzDerW are appropriate
     if len(model.u) > len(options.nnzDerU):
-        raise Exception(' The number of known inputs is higher than the size of nnzDerU and must have the same size. \n            Go to the options file and modify it. \n            For more information about the error see point 7 of the StrikePy instruction manual. ')
+        raise Exception(
+            'The number of known inputs is higher than the size of nnzDerU and must have the same size.\n'
+            'Go to the options file and modify it.\n'
+            'For more information about the error see point 7 of the StrikePy instruction manual.'
+        )
+
     if len(model.w) > len(options.nnzDerW):
-        raise Exception(' The number of unknown inputs is higher than the size of nnzDerW and must have the same size. \n            Go to the options file and modify it. \n            For more information about the error see point 7 of the StrikePy instruction manual. ')
+        raise Exception('The number of unknown inputs is higher than the size of ' 
+                        'nnzDerW and must have the same size.\n' 
+                        'Go to the options file and modify it.\n'
+                        'For more information about the error see point 7 of the StrikePy ' 
+                        'instruction manual.')
     ########################################################################
     # Input derivates:
 
     # Create array of known inputs and set certain derivatives to zero:
     input_der = []
     if len(model.u) > 0:
-        for ind_u in range(len(model.u)):  # create array of derivatives of the inputs
+        for ind_u in range(len(model.u)):  # create array of derivatives 
+            # of the inputs
             if len(model.u) == 1:
-                locals()['{}'.format(model.u[ind_u])] = sym.Symbol('{}'.format(model.u[ind_u]))  # the first element is the underived input
+                # the first element is the underived input
+                locals()['{}'.format(model.u[ind_u])] = sym.Symbol('{}'.format(model.u[ind_u]))  
                 auxiliar = [locals()['{}'.format(model.u[ind_u])]]
             else:
-                locals()['{}'.format(model.u[ind_u][0])] = sym.Symbol('{}'.format(model.u[ind_u][0]))  # the first element is the underived input
+                # the first element is the underived input
+                locals()['{}'.format(model.u[ind_u][0])] = sym.Symbol('{}'.format(model.u[ind_u][0]))  
                 auxiliar = [locals()['{}'.format(model.u[ind_u][0])]]
             for k in range(nd):
                 if len(model.u) == 1:
-                    locals()['{}_d{}'.format(model.u[ind_u], k + 1)] = sym.Symbol('{}_d{}'.format(model.u[ind_u], k + 1))
+                    locals()['{}_d{}'.format(model.u[ind_u], k + 1)] = sym.Symbol(
+                        '{}_d{}'.format(model.u[ind_u], k + 1))
                     auxiliar.append(locals()['{}_d{}'.format(model.u[ind_u], k + 1)])
                 else:
-                    locals()['{}_d{}'.format(model.u[ind_u][0], k + 1)] = sym.Symbol('{}_d{}'.format(model.u[ind_u][0], k + 1))
+                    locals()['{}_d{}'.format(model.u[ind_u][0], k + 1)] = sym.Symbol(
+                        '{}_d{}'.format(model.u[ind_u][0], k + 1))
                     auxiliar.append(locals()['{}_d{}'.format(model.u[ind_u][0], k + 1)])
             if len(model.u) == 1:
                 input_der = auxiliar
@@ -254,17 +277,23 @@ def strike_goldd(*args, model_name_override=None):
     if len(model.w) > 0:
         for ind_w in range(len(model.w)):  # create array of derivatives of the inputs
             if len(model.w) == 1:
-                locals()['{}'.format(model.w[ind_w])] = sym.Symbol('{}'.format(model.w[ind_w]))  # the first element is the underived input
+                # the first element is the underived input
+                locals()['{}'.format(model.w[ind_w])] = sym.Symbol(
+                    '{}'.format(model.w[ind_w]))  
                 auxiliar = [locals()['{}'.format(model.w[ind_w])]]
             else:
-                locals()['{}'.format(model.w[ind_w][0])] = sym.Symbol('{}'.format(model.w[ind_w][0]))  # the first element is the underived input
+                 # the first element is the underived input
+                locals()['{}'.format(model.w[ind_w][0])] = sym.Symbol(
+                    '{}'.format(model.w[ind_w][0])) 
                 auxiliar = [locals()['{}'.format(model.w[ind_w][0])]]
             for k in range(nd + 1):
                 if len(model.w) == 1:
-                    locals()['{}_d{}'.format(model.w[ind_w], k + 1)] = sym.Symbol('{}_d{}'.format(model.w[ind_w], k + 1))
+                    locals()['{}_d{}'.format(model.w[ind_w], k + 1)] = sym.Symbol(
+                        '{}_d{}'.format(model.w[ind_w], k + 1))
                     auxiliar.append(locals()['{}_d{}'.format(model.w[ind_w], k + 1)])
                 else:
-                    locals()['{}_d{}'.format(model.w[ind_w][0], k + 1)] = sym.Symbol('{}_d{}'.format(model.w[ind_w][0], k + 1))
+                    locals()['{}_d{}'.format(model.w[ind_w][0], k + 1)] = sym.Symbol(
+                        '{}_d{}'.format(model.w[ind_w][0], k + 1))
                     auxiliar.append(locals()['{}_d{}'.format(model.w[ind_w][0], k + 1)])
             if len(model.w) == 1:
                 w_der = auxiliar
@@ -346,7 +375,8 @@ def strike_goldd(*args, model_name_override=None):
     # Build Oi:
     onx = np.array(zeros(m * (1 + nd), n + q + len(w1vector)))
     jacobiano = sym.Matrix(model.h).jacobian(xaug)
-    onx[0:len(model.h)] = np.array(jacobiano)  # first row(s) of onx (derivative of the output with respect to the vector states+unknown parameters).
+    onx[0:len(model.h)] = np.array(jacobiano)  # first row(s) of onx (derivative 
+    # of the output with respect to the vector states+unknown parameters).
     toc = time()
     totaltime = toc - tic  # execution time
     ind = 0  # Lie derivative index (sometimes called 'k')
@@ -355,7 +385,8 @@ def strike_goldd(*args, model_name_override=None):
     past_Lie = model.h
     extra_term = np.array(0)
 
-    # loop as long as I don't complete the preset Lie derivatives or go over the maximum time set for each derivative
+    # loop as long as I don't complete the preset Lie derivatives or 
+    # go over the maximum time set for each derivative
     while ind < nd and lasttime < options.maxLietime:
         tic = time()
         Lieh = Matrix((onx[(ind * m):(ind + 1) * m][:]).dot(faug))
@@ -414,12 +445,14 @@ def strike_goldd(*args, model_name_override=None):
             # =============================================================================================
             # The observability/identifiability matrix is saved in a .txt file
             RESULTS_DIR.mkdir(exist_ok=True)
-            file = open(str(RESULTS_DIR / "obs_ident_matrix_{}_{}_Lie_deriv.txt".format(options.modelname, nd)), "w")
+            file = open(str(RESULTS_DIR / "obs_ident_matrix_{}_{}_Lie_deriv.txt".format(
+                options.modelname, nd)), "w")
             file.write('onx = {}'.format(str(onx.tolist())))
             file.close()
             # =============================================================================================
             # Check identifiability by calculating rank:
-            print(' >>> Calculating rank of matrix with size {}x{}...'.format(sym.shape(Matrix(onx))[0], sym.shape(Matrix(onx))[1]))
+            print(' >>> Calculating rank of matrix with size {}x{}...'.format(
+                sym.shape(Matrix(onx))[0], sym.shape(Matrix(onx))[1]))
             tic = time()
             rational_onx = rationalize_all_numbers(Matrix(onx))
             rango = st.generic_rank(Matrix(rational_onx))
@@ -435,7 +468,18 @@ def strike_goldd(*args, model_name_override=None):
                 #----------------------------------------------------------
                 # If there are unknown inputs, we may want to check id/obs of (x,p,w) and not of dw/dt:
                 if len(model.w) > 0:
-                    [identifiables, nonidentif, obs_states, unobs_states, obs_inputs, unobs_inputs] = elim_and_recalc(unmeas_x_indices, rango, onx, model.p, model.x, unidflag, w1vector, identifiables, obs_states, obs_inputs, options=options)
+                    [identifiables, nonidentif, obs_states, unobs_states, obs_inputs, unobs_inputs] = elim_and_recalc(
+                        unmeas_x_indices, 
+                        rango, 
+                        onx, 
+                        model.p, 
+                        model.x, 
+                        unidflag, 
+                        w1vector, 
+                        identifiables, 
+                        obs_states, 
+                        obs_inputs, 
+                        options=options)
 
                     # Check which unknown inputs are observable:
                     obs_in_no_der = []
@@ -451,7 +495,9 @@ def strike_goldd(*args, model_name_override=None):
                                 for input in obs_inputs:
                                     if elemento == input:
                                         obs_in_no_der.append(elemento[0])
-                    if len(identifiables) == len(model.p) and len(obs_states)+len(meas_x) == len(model.x) and len(obs_in_no_der) == len(model.w):
+                    if (len(identifiables) == len(model.p) and 
+                        len(obs_states)+len(meas_x) == len(model.x) and 
+                        len(obs_in_no_der) == len(model.w)):
                         obs_states = model.x
                         obs_inputs = obs_in_no_der
                         identifiables = model.p
@@ -470,17 +516,26 @@ def strike_goldd(*args, model_name_override=None):
                         input_der = []
                         for ind_u in range(len(model.u)):  # create array of derivatives of the inputs
                             if len(model.u) == 1:
-                                locals()['{}'.format(model.u[ind_u])] = sym.Symbol('{}'.format(model.u[ind_u]))  # the first element is the underived input
+                                # the first element 
+                                locals()['{}'.format(model.u[ind_u])] = sym.Symbol(
+                                    '{}'.format(model.u[ind_u]))  
+                                # is the underived input
                                 auxiliar = [locals()['{}'.format(model.u[ind_u])]]
                             else:
-                                locals()['{}'.format(model.u[ind_u][0])] = sym.Symbol('{}'.format(model.u[ind_u][0]))  # the first element is the underived input
+                                # the first 
+                                locals()['{}'.format(model.u[ind_u][0])] = sym.Symbol(
+                                    '{}'.format(model.u[ind_u][0]))  
+                                # element is the underived input
                                 auxiliar = [locals()['{}'.format(model.u[ind_u][0])]]
                             for k in range(nd):
                                 if len(model.u) == 1:
-                                    locals()['{}_d{}'.format(model.u[ind_u], k + 1)] = sym.Symbol('{}_d{}'.format(model.u[ind_u], k + 1))
-                                    auxiliar.append(locals()['{}_d{}'.format(model.u[ind_u], k + 1)])
+                                    locals()['{}_d{}'.format(model.u[ind_u], k + 1)] = sym.Symbol(
+                                        '{}_d{}'.format(model.u[ind_u], k + 1))
+                                    auxiliar.append(locals()['{}_d{}'.format(
+                                        model.u[ind_u], k + 1)])
                                 else:
-                                    locals()['{}_d{}'.format(model.u[ind_u][0], k + 1)] = sym.Symbol('{}_d{}'.format(model.u[ind_u][0], k + 1))
+                                    locals()['{}_d{}'.format(model.u[ind_u][0], k + 1)] = sym.Symbol(
+                                        '{}_d{}'.format(model.u[ind_u][0], k + 1))
                                     auxiliar.append(locals()['{}_d{}'.format(model.u[ind_u][0], k + 1)])
                             if len(model.u) == 1:
                                 input_der = auxiliar
@@ -642,7 +697,9 @@ def strike_goldd(*args, model_name_override=None):
                     lastrank = rango
 
                 # If that is not possible, there are several possible causes:
-                # This is the case when you have onx with all possible derivatives done and it is not full rank, the maximum time for the next derivative has passed
+                # This is the case when you have onx with all possible derivatives done and it is not full rank, 
+                # the maximum time for 
+                # the next derivative has passed
                 # or the matrix no longer increases in rank as derivatives are increased.
                 else:
                     if nd >= len(xaug):  # The maximum number of Lie derivatives has been reached
@@ -651,17 +708,32 @@ def strike_goldd(*args, model_name_override=None):
                     else:
                         if rango == lastrank:
                             onx = onx[0:(-1 -(m - 1))]
-                            nd = nd - 1 # It is indicated that the number of derivatives needed was one less than the number of derivatives made
+                            nd = nd - 1 # It is indicated that the number of derivatives needed was 
+                            # one less than the number of derivatives made
                             unidflag = 1
                         else:
                             if lasttime >= options.maxLietime:
-                                print('\n => More Lie derivatives would be needed to see if the model is structurally unidentifiable as a whole.')
-                                print('    However, the maximum computation time allowed for calculating each of them has been reached.')
-                                print('    You can increase it by changing <<maxLietime>> in options (currently maxLietime = {})'.format(options.maxLietime))
+                                print('\n => More Lie derivatives would be needed to see if the model ' 
+                                      'is structurally unidentifiable as a whole.')
+                                print('    However, the maximum computation time allowed for calculating' 
+                                      ' each of them has been reached.')
+                                print('    You can increase it by changing <<maxLietime>> in options ' 
+                                      '(currently maxLietime = {})'.format(options.maxLietime))
                                 unidflag = 0
                     if skip_elim == 0 and isFISPO == 0:
                         # Eliminate columns one by one to check identifiability of the associated parameters:
-                        [identifiables, nonidentif, obs_states, unobs_states, obs_inputs, unobs_inputs] = elim_and_recalc(unmeas_x_indices, rango, onx, model.p, model.x, unidflag, w1vector, identifiables, obs_states, obs_inputs, options=options)
+                        [identifiables, nonidentif, obs_states, unobs_states, obs_inputs, unobs_inputs] = elim_and_recalc(
+                            unmeas_x_indices, 
+                            rango, 
+                            onx, 
+                            model.p, 
+                            model.x, 
+                            unidflag, 
+                            w1vector, 
+                            identifiables, 
+                            obs_states, 
+                            obs_inputs, 
+                            options=options)
 
                         # Check which unknown inputs are observable:
                         obs_in_no_der = []
@@ -678,7 +750,9 @@ def strike_goldd(*args, model_name_override=None):
                                         if elemento == input:
                                             obs_in_no_der.append(elemento[0])
 
-                        if len(identifiables) == len(model.p) and (len(obs_states) + len(meas_x)) == len(model.x) and len(obs_in_no_der) == len(model.w):
+                        if (len(identifiables) == len(model.p) and 
+                            (len(obs_states) + len(meas_x)) == len(model.x) and 
+                            len(obs_in_no_der) == len(model.w)):
                             obs_states = model.x
                             obs_inputs = obs_in_no_der
                             identifiables = model.p
@@ -689,9 +763,11 @@ def strike_goldd(*args, model_name_override=None):
     else: # If the maxLietime has been reached, but the minimum of Lie derivatives has not been calculated:
         print('\n => More Lie derivatives would be needed to analyse the model.')
         print('    However, the maximum computation time allowed for calculating each of them has been reached.')
-        print('    You can increase it by changing <<maxLietime>> in options (currently maxLietime = {})'.format(options.maxLietime))
+        print('    You can increase it by changing <<maxLietime>> in options (currently maxLietime = {})'.format(
+            options.maxLietime))
         tic = time()
-        print('\n >>> Calculating rank of matrix with size {}x{}...'.format(sym.shape(Matrix(onx))[0], sym.shape(Matrix(onx))[1]))
+        print('\n >>> Calculating rank of matrix with size {}x{}...'.format(sym.shape(Matrix(onx))[0], sym.shape(
+            Matrix(onx))[1]))
         # =============================================================================================
         # The observability/identifiability matrix is saved in a .txt file
         RESULTS_DIR.mkdir(exist_ok=True)
@@ -703,7 +779,10 @@ def strike_goldd(*args, model_name_override=None):
         rango = st.generic_rank(Matrix(rational_onx))
         toc = time() - tic
         print('\n     Rank = {} (calculated in {} seconds)'.format(rango, toc))
-        [identifiables, nonidentif, obs_states, unobs_states, obs_inputs, unobs_inputs] = elim_and_recalc(unmeas_x_indices, rango, onx, identifiables, obs_states, obs_inputs)
+        [identifiables, nonidentif, obs_states, unobs_states, obs_inputs, unobs_inputs] = elim_and_recalc(unmeas_x_indices, 
+                                                                                                          rango, onx, 
+                                                                                                          identifiables, 
+                                                                                                          obs_states, obs_inputs)
     #======================================================================================
     # Build the vectors of identifiable / unidentifiable parameters, and of observable / unobservable states and inputs:
     if len(identifiables) != 0:
@@ -767,17 +846,23 @@ def strike_goldd(*args, model_name_override=None):
                 print('\n >>> The model is structurally unidentifiable.')
                 print('\n >>> These parameters are identifiable:\n      {} '.format(p_id))
                 print('\n >>> These parameters are unidentifiable:\n      {}'.format(p_un))
-                file.write('\n >>> The model is structurally unidentifiable.\n >>> These parameters are identifiable:\n      {}\n >>> These parameters are unidentifiable:\n      {}'.format(p_id,p_un))
+                file.write('\n >>> The model is structurally unidentifiable.\n >>> These parameters are identifiable:\n'
+                           '{}\n >>> These parameters are unidentifiable:\n'
+                           '{}'.format(p_id,p_un))
             else:
                 print('\n >>> These parameters are identifiable:\n      {}'.format(p_id))
                 file.write('\n >>> These parameters are identifiable:\n      {}'.format(p_id))
 
         if len(obs_states) > 0:
-            print('\n >>> These states are observable (and their initial conditions, if unknown, are identifiable):\n      {}'.format(obs_states))
-            file.write('\n >>> These states are observable (and their initial conditions, if unknown, are identifiable):\n      {}'.format(obs_states))
+            print('\n >>> These states are observable (and their initial conditions, if unknown, ' 
+                  'are identifiable):\n      {}'.format(obs_states))
+            file.write('\n >>> These states are observable (and their initial conditions, if unknown, ' 
+                       'are identifiable):\n      {}'.format(obs_states))
         if len(unobs_states) > 0:
-            print('\n >>> These states are unobservable (and their initial conditions, if unknown, are unidentifiable):\n      {}'.format(unobs_states))
-            file.write('\n >>> These states are unobservable (and their initial conditions, if unknown, are unidentifiable):\n      {}'.format(unobs_states))
+            print('\n >>> These states are unobservable (and their initial conditions, if unknown, ' 
+                  'are unidentifiable):\n      {}'.format(unobs_states))
+            file.write('\n >>> These states are unobservable (and their initial conditions, if unknown, ' 
+                       'are unidentifiable):\n      {}'.format(unobs_states))
 
         if len(meas_x) != 0: # para mostrarlo en una fila, como el resto
             meas_x = Matrix(meas_x).T

@@ -28,7 +28,8 @@ def main():
     """Main function to run complete analysis."""
     
     # Parse command line arguments - ADD SCOPE PARSING
-    model_name = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else 'calibration_single'
+    model_name = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith(
+        '--') else 'calibration_single'
     
     # Determine options file: specific options file > default options file
     if len(sys.argv) > 2 and not sys.argv[2].startswith('--'):
@@ -117,10 +118,14 @@ def run_step_by_step_analysis(model_name=None, options_file=None):
                     'nullspace_analysis': checkpoint['nullspace_results'],
                     'matrix_rank': checkpoint['oic_matrix'].rank(),
                     'matrix_shape': checkpoint['oic_matrix'].shape,
-                    'fully_identifiable': checkpoint['nullspace_results'].get('fully_identifiable', False),
-                    'nullspace_dimension': checkpoint['nullspace_results'].get('nullspace_dimension', 0),
-                    'unidentifiable_patterns': checkpoint['nullspace_results'].get('unidentifiable_patterns', []),
-                    'identifiable_info': checkpoint['nullspace_results'].get('identifiable_info', {})
+                    'fully_identifiable': checkpoint['nullspace_results'].get(
+                        'fully_identifiable', False),
+                    'nullspace_dimension': checkpoint['nullspace_results'].get(
+                        'nullspace_dimension', 0),
+                    'unidentifiable_patterns': checkpoint['nullspace_results'].get(
+                        'unidentifiable_patterns', []),
+                    'identifiable_info': checkpoint['nullspace_results'].get(
+                        'identifiable_info', {})
                 }
         except Exception:
             pass  # Fall back to normal analysis    
@@ -181,7 +186,8 @@ def display_final_summary(results):
             
             # Show what IS identifiable
             identifiable_info = results.get('identifiable_info', {})
-            if identifiable_info and not identifiable_info.get('all_params_identifiable', True):
+            if identifiable_info and not identifiable_info.get(
+                'all_params_identifiable', True):
                 combos = identifiable_info.get('identifiable_combinations', [])
                 if combos:
                     print(f"\nIdentifiable combinations:")
