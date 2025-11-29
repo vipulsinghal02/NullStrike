@@ -25,7 +25,8 @@ from ..utils import get_results_dir
 from ..core import strike_goldd
 
 from .enhanced_subspace import analyze_identifiable_combinations
-from ..visualization import build_identifiability_graph, visualize_identifiability_graph, visualize_nullspace_manifolds
+from ..visualization import build_identifiability_graph
+from ..visualization import visualize_identifiability_graph, visualize_nullspace_manifolds
 from .checkpointing import compute_model_hash, save_checkpoint, load_checkpoint
 
 

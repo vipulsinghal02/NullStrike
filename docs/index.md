@@ -2,9 +2,20 @@
 
 ## What is NullStrike?
 
-NullStrike is a tool for analyzing the observability and structural identifiability properties of nonlinear dynamical systems, and does so in a differential geometric framework. I 
+NullStrike is a tool for analyzing the nonlinear observability and structural identifiability properties of dynamical systems in a differential geometric framework (CITE HERMAN KRENER and others). It extends the capabilities of `StrikePy` (a Python implementation of `STRIKE-GOLDD`) by adding the capability to determine not just which parameters are identifiable (and states are observable), but which *combinations of parameters and states are identifiable and observable*, even when individual parameters are not. 
 
-NullStrike extends the capabilities of StrikePy (a Python implementation of STRIKE-GOLDD) by adding nullspace analysis to determine not just which parameters are unidentifiable, but which **parameter combinations** are identifiable/unidentifiable even when individual parameters are not.
+## Geometric Intuition
+
+Given an initialized, parameterized nonlinear ODE model, it might not always be possible to uniquely identify the values of all its parameters and state variables from associated input-output behavior data. The inability of identify parameters (respectively, states) is called (structural) non-identifiability (respectively, unobservability). In general, multiple points in the joint parameter-state variable space will lead to the same input-output behavior, simply by virtue of the structure of the equations of the ODE model. These points form an equivalence class with respect to the (fixed) model structure and input output behaviour, and will, in general, lie along a diffentiable manifold in this joint space. The tools of differential geometry---in particular Frobenius' Theorem and Lie derivatives of output functions along system trajectories---may be used to analyze these manifolds and the nature of the non-identifiability and unobservability. 
+
+This manifold of equivalent points encodes the *co-variation* of parameters and states as their value changes, while keeping the input-output behaviour constant. Changing the input-output behavior corresponds to moving to a different manifold. Indeed, the parameter-state space may be *foliated* via Frobenius theorem, with each leaf corresponding to different input-output behavior (corresponding a different equivalence class of parameters-states). 
+
+Given one of these manifolds (*leaves* in the foliation), the tangent space to the manifold at a point gives the subspace of parameter-state variation directions that leave the input-output behaviour unchanged. These directions can be used to determine how the parameters and states covary to maintain the same behavior. 
+
+See the [Theory](theory.md) section for mode details. 
+
+
+<!--
 
 ### The Core Problem
 
@@ -14,7 +25,7 @@ In many dynamical systems, individual parameters may be unidentifiable, but spec
 2. **Analyzing the nullspace** to find unidentifiable directions  
 3. **Identifying the row space** containing identifiable parameter combinations
 4. **Visualizing these relationships** through 3D and 2D manifolds and constraint graphs
-<!--
+
 ## Key Features
 
 === "Mathematical Foundation"
@@ -106,7 +117,7 @@ NullStrike generates comprehensive analysis including:
 ## Mathematical Background
 <!--
 #TODO explain the math part a little more thoroughly (define terms, explain thing. Either here or in the theory section.)
--->
+
 The core mathematical relationship in NullStrike is:
 
 $$\begin{align}
@@ -117,10 +128,13 @@ $$\begin{align}
 
 Where:
 - $\mathcal{O}$ is the observability-identifiability matrix
-- $\mathcal{L}_f^k h$ are the $k$-th Lie derivatives  
-- $\mathcal{N}$ contains unidentifiable directions
-- $\mathcal{I}$ contains identifiable directions
 
+- $\mathcal{L}_f^k h$ are the $k$-th Lie derivatives  
+
+- $\mathcal{N}$ contains unidentifiable directions
+
+- $\mathcal{I}$ contains identifiable directions
+-->
 ## Navigation Guide
 
 - **[Getting Started](installation.md)**: Installation and setup

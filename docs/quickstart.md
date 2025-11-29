@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-Get up and running with NullStrike in under 5 minutes! This guide provides immediate examples to help you understand structural identifiability analysis.
+This guide provides immediate examples to help you understand structural identifiability analysis using the NullStrike package. 
 
 ## 30-Second Test
 
@@ -11,7 +11,7 @@ After [installation](installation.md), verify everything works:
 nullstrike C2M
 ```
 
-That's it! NullStrike will:
+NullStrike will:
 
 1. Analyze the C2M pharmacokinetic model
 2. Generate visualizations in `results/C2M/`
@@ -30,8 +30,11 @@ nullstrike C2M
 **What this analyzes**: A pharmacokinetic model with drug distribution between central and peripheral compartments.
 
 **Key results**:
+
 - Individual parameters `k12`, `k21`, `V1`, `V2` are unidentifiable
+
 - Parameter combinations like `k12*V1` and `k21*V2` are identifiable
+
 - Results saved in `results/C2M/`
 
 ### Example 2: Calibration Model
@@ -43,8 +46,11 @@ nullstrike calibration_single
 **What this analyzes**: A biochemical reaction model with DNA-enzyme interactions.
 
 **Key results**:
-- Analyzes enzyme kinetics with DNA template binding
+
+- Models protein production via an enzymatic reaction
+
 - Shows which rate constants can be determined from GFP fluorescence data
+
 - Generates 3D manifold plots of parameter constraints
 
 ### Example 3: Bolie Model
@@ -56,8 +62,11 @@ nullstrike Bolie
 **What this analyzes**: A glucose-insulin interaction model from diabetes research.
 
 **Key results**:
+
 - Multi-parameter identifiability analysis
+
 - Complex parameter interactions in metabolic networks
+
 - Constraint surfaces showing feasible parameter regions
 
 ## Understanding the Output
