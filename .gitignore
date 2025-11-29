@@ -28,6 +28,7 @@ checkpoints/
 results/
 models/
 .claude/
+docs/docsv2_backup/
 
 # Documentation build directory
 site/
