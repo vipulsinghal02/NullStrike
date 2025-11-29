@@ -470,8 +470,6 @@ After working through these examples:
 
 1. **Try your own model:** Use patterns from Examples 1-3
 2. **Check theory:** See [Theory](theory.md) for mathematical details
-3. **Use reference:** See [Reference](reference.md) for complete API
-4. **Quick recall:** Use [QUICK_REFERENCE.md](QUICK_REFERENCE.md) cheat sheet
 
 ## Example Model Library
 

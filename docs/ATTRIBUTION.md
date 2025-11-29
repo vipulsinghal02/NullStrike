@@ -7,30 +7,46 @@ NullStrike builds upon and extends the StrikePy package, which is a Python imple
 ### Original Work Credits
 
 **StrikePy** (Python Implementation)
+
 - **Author**: David Rey Rostro (davidreyrostro@gmail.com)  
+
 - **License**: GPL-3.0
+
 - **Description**: Python implementation of STRIKE-GOLDD for structural identifiability analysis
+
 - **Original Repository**: [[StrikePy](https://github.com/afvillaverde/StrikePy/tree/main)]
 
 **STRIKE-GOLDD** (Original Algorithm)
+
 - **Author**: Alejandro Fernandez Villaverde (afvillaverde@uvigo.gal)
+
 - **Institution**: University of Vigo, Spain
+
 - **Description**: Original MATLAB toolbox for structural identifiability analysis using Lie derivatives
+
 - **Reference**: Villaverde, A.F., Barreiro, A., & Papachristodoulou, A. (2016). Structural identifiability of dynamic systems biology models. PLoS computational biology, 12(10), e1005153.
 
 ### NullStrike Extensions
 
 **Enhanced Nullspace Analysis** 
 - **Authors**: [Vipul Singhal]
+
 - **License**: GPL-3.0 (to comply with StrikePy licensing)
+
 - **Description**: Advanced nullspace analysis to identify parameter combinations that are structurally identifiable
 
 **Key Enhancements**:
+
 - Nullspace analysis of observability-identifiability matrices
+
 - Identification of structurally identifiable parameter combinations
+
 - Advanced visualization tools (3D manifold plots, constraint graphs)
+
 - Comprehensive reporting with mathematical interpretations
+
 - Checkpointing system for efficient reanalysis
+
 - Enhanced command-line interface
 
 ### Directory Structure Attribution

@@ -49,6 +49,8 @@ In many dynamical systems, individual parameters may be unidentifiable, but spec
     - **Python API**: Programmatic access for advanced users
     - **Batch Processing**: Analyze multiple models efficiently
 -->
+
+<!--
 ## Quick Start
 
 Get started with NullStrike in just a few commands:
@@ -115,7 +117,7 @@ NullStrike generates comprehensive analysis including:
     - **Graph analysis**: Parameter dependency networks
 
 ## Mathematical Background
-<!--
+
 #TODO explain the math part a little more thoroughly (define terms, explain thing. Either here or in the theory section.)
 
 The core mathematical relationship in NullStrike is:
@@ -139,9 +141,7 @@ Where:
 
 - **[Getting Started](installation.md)**: Installation and setup
 - **[Mathematical Foundations](theory.md)**: Theory and algorithms  
-- **[User Guide](reference.md)**: Practical usage instructions
 - **[Examples](examples.md)**: Step-by-step tutorials
-- **[API Reference](reference.md)**: Detailed code documentation
 
 ---
 <!-- 

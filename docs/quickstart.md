@@ -247,7 +247,6 @@ Now that you've run your first analyses:
 1. **[Understand the theory](theory.md)**: Learn the mathematical foundations
 2. **[Deep dive tutorial](quickstart.md)**: Step-by-step walkthrough
 3. **[Explore examples](examples.md)**: See more complex models
-4. **[Model definition guide](reference.md)**: Learn to define your own models
 5. **[Results interpretation](examples.md)**: Understand the output files
 
 ## Common Use Cases
