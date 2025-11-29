@@ -64,8 +64,11 @@ For a typical PK model with parameters `k12`, `k21`, `V1`, `V2`:
 **Traditional Analysis**: *"All parameters are unidentifiable"*
 
 **NullStrike Analysis**: 
+
 - **Identifiable combinations**: `k12×V1`, `k21×V2`, `(k12+k21+k10)×V1`
+
 - **Nullspace dimension**: 1 (out of 4 parameters)
+
 - **3 independent combinations** can be reliably estimated
 
 ### Visualization Outputs
@@ -73,8 +76,11 @@ For a typical PK model with parameters `k12`, `k21`, `V1`, `V2`:
 NullStrike generates comprehensive visual analysis:
 
 - **3D Manifold Plots**: Parameter constraint surfaces
+
 - **2D Projections**: Pairwise parameter relationships  
+
 - **Graph Networks**: Parameter dependency visualization
+
 - **Detailed Reports**: Mathematical interpretations
 
 ## Mathematical Foundation
@@ -159,9 +165,13 @@ prev_ident_pars = []    # Previously identified parameters
 ## Advanced Features
 
 - **Checkpointing System**: Intelligent caching avoids recomputation
+
 - **Batch Processing**: Analyze multiple models efficiently  
+
 - **Parameter Manifold Visualization**: 3D constraint surfaces
+
 - **Graph Analysis**: Network representation of dependencies
+
 - **Comprehensive Reports**: Mathematical interpretations and actionable insights
 
 ## Documentation
@@ -172,8 +182,8 @@ prev_ident_pars = []    # Previously identified parameters
 - **[Installation](https://vipulsinghal02.github.io/NullStrike/installation/)**: Setup instructions
 - **[Theory](https://vipulsinghal02.github.io/NullStrike/theory/)**: Mathematical foundations
 - **[Examples](https://vipulsinghal02.github.io/NullStrike/examples/)**: Step-by-step tutorials
-- **[Reference](https://vipulsinghal02.github.io/NullStrike/reference/)**: Complete API and CLI reference
-- **[Contributing](https://vipulsinghal02.github.io/NullStrike/contributing/)**: Development guide
+<!-- - **[Reference](https://vipulsinghal02.github.io/NullStrike/reference/)**: Complete API and CLI reference -->
+<!-- - **[Contributing](https://vipulsinghal02.github.io/NullStrike/contributing/)**: Development guide -->
 
 ## Development
 
@@ -205,8 +215,11 @@ mkdocs build            # Build static site
 We welcome contributions! Please see our [Contributing Guide](https://vipulsinghal02.github.io/NullStrike/dev/contributing/) for details on:
 
 - Setting up the development environment
+
 - Code style and testing requirements
+
 - Submitting pull requests
+
 - Reporting issues
 
 ## License
@@ -231,7 +244,9 @@ If you use NullStrike in your research, please cite:
 ## Getting Help
 
 - **Documentation**: [https://vipulsinghal02.github.io/NullStrike/](https://vipulsinghal02.github.io/NullStrike/)
+
 - **Issues**: [GitHub Issues](https://github.com/vipulsinghal02/NullStrike/issues)
+
 - **Discussions**: [GitHub Discussions](https://github.com/vipulsinghal02/NullStrike/discussions)
 
 ---

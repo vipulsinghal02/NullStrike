@@ -381,8 +381,7 @@ def save_detailed_results(results, model_name, timestamp=None):
                         f.write("\n")
                 else:
                     f.write("No identifiable combinations found (this may indicate an error)\n")
-                f.write(f"Number of identifiable directions: {identifiable_info.get(
-                    'n_identifiable_combinations', 0)}\n")
+                f.write(f"Number of identifiable directions: {identifiable_info.get('n_identifiable_combinations', 0)}\n")
             else:
                 f.write("All parameters are individually identifiable.\n")
             

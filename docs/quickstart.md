@@ -2,8 +2,6 @@
 
 This guide provides immediate examples to help you understand structural identifiability analysis using the NullStrike package. 
 
-## 30-Second Test
-
 After [installation](installation.md), verify everything works:
 
 ```bash
@@ -17,7 +15,7 @@ NullStrike will:
 2. Generate visualizations in `results/C2M/`
 3. Show you which parameter combinations are identifiable
 
-## 2-Minute Analysis
+## Quick Analysis
 
 Let's examine what just happened and run a few more examples:
 

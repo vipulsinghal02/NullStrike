@@ -2,7 +2,7 @@
 
 ## What is NullStrike?
 
-NullStrike is a tool for analyzing the nonlinear observability and structural identifiability properties of dynamical systems in a differential geometric framework (CITE HERMAN KRENER and others). It extends the capabilities of `StrikePy` (a Python implementation of `STRIKE-GOLDD`) by adding the capability to determine not just which parameters are identifiable (and states are observable), but which *combinations of parameters and states are identifiable and observable*, even when individual parameters are not. 
+NullStrike (NULLspace analysis + STRIKEpy) is a tool for analyzing the nonlinear observability and structural identifiability properties of dynamical systems in a differential geometric framework (CITE HERMAN KRENER and others). It extends the capabilities of `StrikePy` (a Python implementation of the MATLAB-based `STRIKE-GOLDD` structural identifiability analysis toolbox (CITE villaverde)) by adding the capability to determine not only which parameters are identifiable (and states are observable), but which *combinations of parameters and states are identifiable and observable*, even when individual parameters are not. It does so by computing the **nullspace** (kernel) of the observability-identifiability codistribution, as described in (cite calibration paper.). 
 
 ## Geometric Intuition
 
