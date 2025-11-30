@@ -15,17 +15,24 @@ NullStrike will:
 2. Generate visualizations in `results/C2M/`
 3. Show you which parameter combinations are identifiable
 
-## Quick Analysis
+**What this analyzes**: A pharmacokinetic model with drug distribution between central and peripheral compartments. The model is described in the publication
+> `Villaverde Alejandro F., Tsiantis Nikolaos and Banga Julio R. 2019Full observability and estimation of unknown inputs, states and parameters of nonlinear biological modelsJ. R. Soc. Interface.1620190043. 
+http://doi.org/10.1098/rsif.2019.0043`
 
-Let's examine what just happened and run a few more examples:
+and is described by the equations: 
 
-### Example 1: Two-Compartment Model (C2M)
+$$\begin{align*}
+\dot{x}_1(t) &= -(k_{1e}+k_{12})x_1(t) + k_{21}x_2(t) + w(t)\\
+\dot{x}_2(t) &= k_{12}x_1(t) - k_{21}x_2(t)\\
+y(t) &= x_1(t)
+\end{align*}$$
 
-```bash
-nullstrike C2M
-```
+where the input $w(t)$ is unknown. It turns out that this model is not observable / identifiable in its current form. Running Nullstrike on it returns the following: 
 
-**What this analyzes**: A pharmacokinetic model with drug distribution between central and peripheral compartments.
+
+
+
+
 
 **Key results**:
 
@@ -34,38 +41,6 @@ nullstrike C2M
 - Parameter combinations like `k12*V1` and `k21*V2` are identifiable
 
 - Results saved in `results/C2M/`
-
-### Example 2: Calibration Model
-
-```bash
-nullstrike calibration_single
-```
-
-**What this analyzes**: A biochemical reaction model with DNA-enzyme interactions.
-
-**Key results**:
-
-- Models protein production via an enzymatic reaction
-
-- Shows which rate constants can be determined from GFP fluorescence data
-
-- Generates 3D manifold plots of parameter constraints
-
-### Example 3: Bolie Model
-
-```bash
-nullstrike Bolie
-```
-
-**What this analyzes**: A glucose-insulin interaction model from diabetes research.
-
-**Key results**:
-
-- Multi-parameter identifiability analysis
-
-- Complex parameter interactions in metabolic networks
-
-- Constraint surfaces showing feasible parameter regions
 
 ## Understanding the Output
 
@@ -115,7 +90,7 @@ results/
     
     These products/combinations are mathematically determinable from output data.
 
-## 5-Minute Custom Analysis
+## Custom Analysis
 
 Want to analyze your own model? Create a simple example:
 
@@ -150,7 +125,7 @@ variables_locales = locals().copy()
 
 ### Step 2: Create Options File
 
-Create `custom_options/options_my_model.py`:
+An options file is needed to run a model. See [Examples](docs/examples.md) for details. For now, create `custom_options/options_my_model.py`:
 
 ```python
 modelname = 'my_model'

@@ -7,8 +7,8 @@ import sympy as sym
 #--------------------------------------------------------------------------
 # Modified so that 'b' is assumed to be known
 
-x1, x2, x3, x4, x5, x6 = sym.symbols('x1 x2 x3 x4 x5 x6')
-u1, u2 = sym.symbols('u1 u2')
+x1, x2, x3, x4, x5 = sym.symbols('x1 x2 x3 x4 x5')
+u1 = sym.symbols('u1')
 
 # 2 states
 x = [[x1], [x2]]
@@ -20,13 +20,13 @@ h = [x1]
 u = []
 
 # 1 unknown input
-w = [[u1], [u2]]
+w = [[u1]]
 
 # 4 unknown parameters
 p = [[x3], [x4], [x5]]  # x6 -> 'b' is a known constant #NOTE: anything that is not in 'p' or u or w or x is assumed to be known?
 
 # dynamic equations
-f = [[-(x3+x4)*x1+x5*x2+x6*u1], [x4*x1-x5*x2]]
+f = [[-(x3+x4)*x1+x5*x2+u1], [x4*x1-x5*x2]]
 
 
 variables_locales = locals().copy()

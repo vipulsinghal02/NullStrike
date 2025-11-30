@@ -8,9 +8,6 @@ w, f, h are reserved names, which must be used for the variables and/or function
 in Table 1 and cannot be used to name any other variables. However, it is possible to
 use variants of them, e.g. x1, x2, p1, p2, u1, u2, w1, w2, f1, f2, h1, h2.
 
-
-
-
 """
 # C2M
 x1 = sym.Symbol('x1')  # define the symbolic variable x1

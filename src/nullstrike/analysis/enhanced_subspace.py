@@ -168,7 +168,16 @@ def analyze_identifiable_combinations(O_matrix, param_symbols, state_symbols, in
         input_combo = []
         for j, coeff in enumerate(input_part):
             if coeff != 0:
-                input_combo.append((input_symbols[j], coeff))
+                # Only use base input symbols; derivatives are indexed beyond len(input_symbols)
+                if j < len(input_symbols):
+                    input_combo.append((input_symbols[j], coeff))
+                else:
+                    # This is a derivative (u_d1, u_d2, etc.)
+                    base_idx = j % len(input_symbols) if input_symbols else 0
+                    deriv_order = j // len(input_symbols) if input_symbols else j
+                    if base_idx < len(input_symbols):
+                        input_name = f"{input_symbols[base_idx]}_d{deriv_order}"
+                        input_combo.append((input_name, coeff))
         
         # Create human-readable relationship
         relationship = build_relationship_string(param_combo, input_combo, unobs_states)

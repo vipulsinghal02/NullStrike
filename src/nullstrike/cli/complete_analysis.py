@@ -261,12 +261,12 @@ def help_usage():
     print("   python complete_analysis.py Bolie options_Bolie --parameters-only")
     
     print("\n2. STEP-BY-STEP WORKFLOW:")
-    print("   a) First, ensure your model is defined in models/YourModel.py")
+    print("   a) First, ensure your model is defined in custom_models/YourModel.py")
     print("   b) Create options file (optional): custom_options/options_YourModel.py")
     print("   c) Run: python complete_analysis.py YourModel options_YourModel")
     
     print("\n3. FILE STRUCTURE EXPECTED:")
-    print("   models/")
+    print("   custom_models/")
     print("   ├── C2M.py                    # Model definition")
     print("   └── YourModel.py              # Your model")
     print("   custom_options/")
@@ -313,7 +313,7 @@ def validate_environment():
         return False
     
     # Check required directories
-    dirs = ['models', 'results', 'custom_options', 'functions']
+    dirs = ['custom_models', 'results', 'custom_options']
     for d in dirs:
         if Path(d).exists():
             print(f"✓ {d}/ directory")
@@ -356,7 +356,7 @@ f = [[-k1*x1 + u1], [k2*x1]]
 variables_locales = locals().copy()
 '''
     
-    models_dir = Path('models')
+    models_dir = Path('custom_models')
     models_dir.mkdir(exist_ok=True)
     
     example_file = models_dir / 'SimpleExample.py'
