@@ -22,6 +22,7 @@ todo.md
 *~
 DOCUMENTATION_SETUP_GUIDE.md
 GITHUB_PAGES_SETUP.md
+custom_models/C2M_unknown_input_known_b_backup_incorrect.py
 
 # Directories with temporary or generated files
 checkpoints/
@@ -29,6 +30,7 @@ results/
 models/
 .claude/
 docs/docsv2_backup/
+old/models
 
 # Documentation build directory
 site/
